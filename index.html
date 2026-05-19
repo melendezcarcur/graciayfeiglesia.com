@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gracia y Fe Iglesia — Transformar vidas mediante el evangelio de la gracia y fe en Jesús. Cd. Victoria, Tamaulipas.">
+<title>Gracia y Fe Iglesia</title>
+<style>
+@font-face {
+  font-family: 'Gotham';
+  src: url('assets/fonts/GothamMedium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('assets/fonts/GothamBold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('assets/fonts/Gotham_Black_Regular.ttf') format('truetype');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('assets/fonts/Gotham-Black.otf') format('opentype');
+  font-weight: 800;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root { --nav-h: 68px; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Gotham', 'Montserrat', sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  padding: 0 40px;
+  background: rgba(10,10,10,0.96);
+  backdrop-filter: blur(12px);
+  transition: background 0.3s;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none; color: #fff; flex-shrink: 0;
+  margin-right: 44px;
+}
+
+.logo-ring {
+  width: 40px; height: 40px;
+  border: 1.5px solid rgba(255,255,255,0.75);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.logo-ring-inner {
+  width: 17px; height: 17px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.45);
+}
+
+.logo-name {
+  font-size: 14.5px; font-weight: 900;
+  letter-spacing: 2.5px; text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex; gap: 30px; list-style: none; flex: 1; justify-content: center;
+}
+
+.nav-links a {
+  text-decoration: none; color: rgba(255,255,255,0.78);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.8px;
+  transition: color 0.2s; position: relative; padding-bottom: 4px;
+}
+
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+
+.nav-dot {
+  position: absolute; bottom: -6px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px; border-radius: 50%;
+  background: #d94f4f; display: none;
+}
+
+.nav-links a.active .nav-dot { display: block; }
+
+.nav-search {
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.65); padding: 4px; margin-left: auto;
+  transition: color 0.2s;
+}
+
+.nav-search:hover { color: #fff; }
+
+.nav-search svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+
+.hamburger {
+  display: none; background: none; border: none;
+  flex-direction: column; gap: 5px; cursor: pointer; margin-left: auto;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; transition: 0.3s; }
+
+/* ── HERO ── */
+#hero {
+  height: 100vh; min-height: 580px;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+
+.hero-slides {
+  position: absolute; inset: 0;
+}
+
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+
+.hero-slide.active { opacity: 1; }
+
+.hero-slide::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.38) 0%,
+    rgba(0,0,0,0.28) 40%,
+    rgba(0,0,0,0.62) 100%
+  );
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 24px;
+}
+
+.hero-title {
+  font-size: clamp(30px, 5.5vw, 56px);
+  font-weight: 900; letter-spacing: 4px;
+  text-transform: uppercase; line-height: 1.1;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+
+/* ── DIAGONAL TEXTURE ── */
+.tex {
+  background-color: #111;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 5px,
+    rgba(255,255,255,0.022) 5px,
+    rgba(255,255,255,0.022) 10px
+  );
+}
+
+/* ── LO MÁS RECIENTE ── */
+#recientes { padding: 80px 40px 88px; }
+
+.section-heading {
+  text-align: center; font-size: clamp(20px, 3vw, 32px);
+  font-weight: 900; letter-spacing: 5px; text-transform: uppercase;
+  margin-bottom: 56px;
+}
+
+.videos-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px; max-width: 1080px; margin: 0 auto;
+}
+
+.video-card { background: #0d0d0d; }
+
+.video-wrap {
+  position: relative; width: 100%; aspect-ratio: 16/9; background: #000;
+}
+
+.video-wrap iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+}
+
+.video-footer {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.5);
+}
+
+.yt-red { fill: #FF0000; }
+
+.ver-mas-wrap { text-align: center; margin-top: 48px; }
+
+.btn-outline {
+  display: inline-block;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.75); text-decoration: none;
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; padding: 13px 40px;
+  transition: all 0.2s; font-family: 'Gotham', sans-serif;
+}
+
+.btn-outline:hover { border-color: #fff; color: #fff; }
+
+/* ── NOSOTROS ── */
+#nosotros {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.nosotros-img {
+  background: url('assets/img/img6.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.nosotros-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 55%, #111);
+}
+
+.nosotros-text {
+  background: #111;
+  background-image: repeating-linear-gradient(
+    -45deg, transparent, transparent 5px,
+    rgba(255,255,255,0.022) 5px, rgba(255,255,255,0.022) 10px
+  );
+  padding: 72px 60px; display: flex; flex-direction: column; justify-content: center;
+}
+
+.eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 14px;
+}
+
+.block-title {
+  font-size: clamp(26px, 3.5vw, 40px); font-weight: 900;
+  letter-spacing: 3px; text-transform: uppercase;
+  line-height: 1.08; margin-bottom: 22px;
+}
+
+.block-body {
+  font-size: 14px; font-weight: 500; line-height: 1.85;
+  color: rgba(255,255,255,0.6); margin-bottom: 28px;
+  max-width: 440px;
+}
+
+.verse {
+  border-left: 2px solid rgba(255,255,255,0.18);
+  padding: 10px 20px; margin-top: 4px;
+}
+
+.verse p { font-size: 14px; font-style: italic; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.verse span { display: block; font-size: 10px; color: rgba(255,255,255,0.28); margin-top: 6px; letter-spacing: 2px; text-transform: uppercase; }
+
+/* ── HORARIOS ── */
+#horarios { padding: 80px 40px; text-align: center; }
+.horarios-inner { max-width: 960px; margin: 0 auto; }
+
+.horarios-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07); margin-top: 48px;
+}
+
+.h-card {
+  background: #111; padding: 36px 16px; transition: background 0.2s;
+}
+
+.h-card:hover { background: #181818; }
+.h-day { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.h-name { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+.h-time { font-size: 38px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+.h-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 8px; font-weight: 500; }
+
+/* ── GALLERY ── */
+#galeria { padding: 0; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 3px;
+}
+
+.g-item {
+  overflow: hidden; position: relative;
+  aspect-ratio: 1;
+  background: #1a1a1a;
+}
+
+.g-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+.g-item.tall { grid-row: span 2; aspect-ratio: 1/2; }
+
+.g-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease; display: block;
+}
+
+.g-item:hover img { transform: scale(1.04); }
+
+/* ── INVOLÚCRATE ── */
+#involucrate { padding: 80px 40px; }
+.involucrate-inner { max-width: 1040px; margin: 0 auto; }
+
+.invol-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 3px; margin-top: 48px; background: rgba(255,255,255,0.04);
+}
+
+.invol-card {
+  background: #111; padding: 36px 28px;
+  text-decoration: none; color: #fff; display: block;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.invol-card:hover { border-bottom-color: #fff; background: #161616; }
+
+.invol-card .ic-icon {
+  width: 44px; height: 44px; margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.invol-card .ic-icon svg { width: 20px; height: 20px; fill: none; stroke: rgba(255,255,255,0.7); stroke-width: 1.5; }
+.invol-card h3 { font-size: 13px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.invol-card p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; font-weight: 500; }
+
+/* ── UBICACIÓN ── */
+#ubicacion { padding: 80px 40px; }
+.ubicacion-inner { max-width: 1040px; margin: 0 auto; }
+
+.ubic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; }
+
+.map-box {
+  aspect-ratio: 4/3; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.map-box iframe { width: 100%; height: 100%; border: none; filter: grayscale(75%) brightness(0.75); }
+
+.ubic-info { display: flex; flex-direction: column; gap: 28px; justify-content: center; }
+.ubic-row h4 { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.32); margin-bottom: 7px; }
+.ubic-row p, .ubic-row a { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.65; font-weight: 500; }
+.ubic-row a { text-decoration: none; transition: color 0.2s; }
+.ubic-row a:hover { color: #fff; }
+
+.btn-solid {
+  display: inline-block; background: #fff; color: #0d0d0d;
+  font-size: 10px; font-weight: 900; letter-spacing: 2.5px;
+  text-transform: uppercase; padding: 13px 36px;
+  text-decoration: none; transition: background 0.2s;
+  font-family: 'Gotham', sans-serif;
+}
+
+.btn-solid:hover { background: rgba(255,255,255,0.88); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 56px 40px 32px; text-align: center;
+}
+
+.footer-socials {
+  display: flex; justify-content: center; gap: 18px; margin-bottom: 26px;
+}
+
+.soc-link {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.14);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: rgba(255,255,255,0.55);
+  transition: all 0.2s;
+}
+
+.soc-link:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+.soc-link svg { width: 16px; height: 16px; fill: currentColor; }
+
+.footer-name {
+  font-size: 16px; font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+
+.footer-addr {
+  font-size: 13px; color: rgba(255,255,255,0.38);
+  line-height: 1.9; font-weight: 500;
+}
+
+.footer-addr a { color: rgba(255,255,255,0.38); text-decoration: none; }
+.footer-addr a:hover { color: rgba(255,255,255,0.7); }
+
+.footer-copy {
+  margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 1px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: rgba(10,10,10,0.98); padding: 12px 20px 24px;
+    gap: 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    z-index: 99;
+  }
+  .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav-links.open a { display: block; padding: 13px 0; font-size: 13px; }
+  .nav-search { display: none; }
+  .hamburger { display: flex; }
+  .logo-name { font-size: 12px; letter-spacing: 1.5px; }
+
+  #nosotros { grid-template-columns: 1fr; }
+  .nosotros-img { min-height: 300px; }
+  .nosotros-text { padding: 52px 28px; }
+
+  .horarios-grid { grid-template-columns: repeat(2,1fr); }
+
+  .gallery-grid { grid-template-columns: repeat(2,1fr); }
+  .g-item.wide, .g-item.tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
+
+  .ubic-grid { grid-template-columns: 1fr; }
+  .invol-grid { grid-template-columns: 1fr 1fr; }
+
+  #recientes, #horarios, #involucrate, #ubicacion { padding: 64px 20px; }
+  footer { padding: 48px 20px 28px; }
+}
+
+@media (max-width: 540px) {
+  .horarios-grid { grid-template-columns: 1fr 1fr; }
+  .invol-grid { grid-template-columns: 1fr; }
+  .videos-row { grid-template-columns: 1fr; }
+  .hero-title { letter-spacing: 2px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="logo-ring"><div class="logo-ring-inner"></div></div>
+    <span class="logo-name">Gracia y Fe Iglesia</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#recientes" class="active">Iglesia<span class="nav-dot"></span></a></li>
+    <li><a href="#horarios">Eventos<span class="nav-dot"></span></a></li>
+    <li><a href="#involucrate">Escuela</a></li>
+    <li><a href="#involucrate">Involúcrate</a></li>
+    <li><a href="#footer">Donativos</a></li>
+  </ul>
+  <button class="nav-search" aria-label="Buscar">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('assets/img/img6.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/img/img5.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/img/img7.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('assets/img/img2.jpg')"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Bienvenido a Gracia y Fe<br>Tu Iglesia</h1>
+  </div>
+</section>
+
+<!-- ── LO MÁS RECIENTE ── -->
+<section id="recientes" class="tex">
+  <h2 class="section-heading">Lo más reciente</h2>
+  <div class="videos-row">
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/iuFFoNWpAXk"
+          title="El Gym de la Fe 1 — El fundamento"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-footer">
+        <svg class="yt-red" width="18" height="13" viewBox="0 0 18 13"><path d="M17.6 2.1A2.2 2.2 0 0 0 16.1.6C14.7 0 9 0 9 0S3.3 0 1.9.6A2.2 2.2 0 0 0 .4 2.1 23 23 0 0 0 0 6.5a23 23 0 0 0 .4 4.4 2.2 2.2 0 0 0 1.5 1.5C3.3 13 9 13 9 13s5.7 0 7.1-.6a2.2 2.2 0 0 0 1.5-1.5A23 23 0 0 0 18 6.5a23 23 0 0 0-.4-4.4zM7.2 9.3V3.7L11.9 6.5 7.2 9.3z"/></svg>
+        Ver en YouTube
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/-ABERG3Vrzg"
+          title="El Gym de la Fe 2 — Ejercita tu oído"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-footer">
+        <svg class="yt-red" width="18" height="13" viewBox="0 0 18 13"><path d="M17.6 2.1A2.2 2.2 0 0 0 16.1.6C14.7 0 9 0 9 0S3.3 0 1.9.6A2.2 2.2 0 0 0 .4 2.1 23 23 0 0 0 0 6.5a23 23 0 0 0 .4 4.4 2.2 2.2 0 0 0 1.5 1.5C3.3 13 9 13 9 13s5.7 0 7.1-.6a2.2 2.2 0 0 0 1.5-1.5A23 23 0 0 0 18 6.5a23 23 0 0 0-.4-4.4zM7.2 9.3V3.7L11.9 6.5 7.2 9.3z"/></svg>
+        Ver en YouTube
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/njfSyvuyzg8"
+          title="Prédica"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-footer">
+        <svg class="yt-red" width="18" height="13" viewBox="0 0 18 13"><path d="M17.6 2.1A2.2 2.2 0 0 0 16.1.6C14.7 0 9 0 9 0S3.3 0 1.9.6A2.2 2.2 0 0 0 .4 2.1 23 23 0 0 0 0 6.5a23 23 0 0 0 .4 4.4 2.2 2.2 0 0 0 1.5 1.5C3.3 13 9 13 9 13s5.7 0 7.1-.6a2.2 2.2 0 0 0 1.5-1.5A23 23 0 0 0 18 6.5a23 23 0 0 0-.4-4.4zM7.2 9.3V3.7L11.9 6.5 7.2 9.3z"/></svg>
+        Ver en YouTube
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/6PFIJVubak0"
+          title="Prédica"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-footer">
+        <svg class="yt-red" width="18" height="13" viewBox="0 0 18 13"><path d="M17.6 2.1A2.2 2.2 0 0 0 16.1.6C14.7 0 9 0 9 0S3.3 0 1.9.6A2.2 2.2 0 0 0 .4 2.1 23 23 0 0 0 0 6.5a23 23 0 0 0 .4 4.4 2.2 2.2 0 0 0 1.5 1.5C3.3 13 9 13 9 13s5.7 0 7.1-.6a2.2 2.2 0 0 0 1.5-1.5A23 23 0 0 0 18 6.5a23 23 0 0 0-.4-4.4zM7.2 9.3V3.7L11.9 6.5 7.2 9.3z"/></svg>
+        Ver en YouTube
+      </div>
+    </div>
+
+  </div>
+  <div class="ver-mas-wrap">
+    <a href="https://www.youtube.com/channel/UCwLsinCgFSqcqne2tASgx5g" target="_blank" class="btn-outline">
+      Ver todas las prédicas ↗
+    </a>
+  </div>
+</section>
+
+<!-- ── NOSOTROS ── -->
+<section id="nosotros">
+  <div class="nosotros-img"></div>
+  <div class="nosotros-text">
+    <p class="eyebrow">Quiénes somos</p>
+    <h2 class="block-title">Una iglesia<br>para todos</h2>
+    <p class="block-body">Somos una comunidad de fe en Ciudad Victoria, Tamaulipas. Nuestra misión es transformar vidas mediante el evangelio de la Gracia y Fe en Jesús. Con reuniones presenciales y en línea, todos son bienvenidos.</p>
+    <div class="verse">
+      <p>"Dios los salvó por su gracia cuando creyeron. Ustedes no tienen ningún mérito en eso; es un regalo de Dios."</p>
+      <span>— Efesios 2:8-9</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── HORARIOS ── -->
+<section id="horarios" class="tex">
+  <div class="horarios-inner">
+    <h2 class="section-heading">Horarios</h2>
+    <div class="horarios-grid">
+      <div class="h-card">
+        <p class="h-day">Lunes — Viernes</p>
+        <p class="h-name">Oración</p>
+        <p class="h-time">7:00</p>
+        <p class="h-sub">AM — 9:00 AM</p>
+      </div>
+      <div class="h-card">
+        <p class="h-day">Miércoles</p>
+        <p class="h-name">Reunión General</p>
+        <p class="h-time">7:30</p>
+        <p class="h-sub">PM</p>
+      </div>
+      <div class="h-card">
+        <p class="h-day">Domingo</p>
+        <p class="h-name">Primer Servicio</p>
+        <p class="h-time">10:00</p>
+        <p class="h-sub">AM · En línea y presencial</p>
+      </div>
+      <div class="h-card">
+        <p class="h-day">Domingo</p>
+        <p class="h-name">Segundo Servicio</p>
+        <p class="h-time">12:00</p>
+        <p class="h-sub">PM · Presencial</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALERÍA ── -->
+<section id="galeria">
+  <div class="gallery-grid">
+    <div class="g-item wide">
+      <img src="assets/img/img5.jpg" alt="Congregación adorando" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="assets/img/img1.jpg" alt="Adoración" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="assets/img/img9.jpg" alt="Adoración" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="assets/img/img3.jpg" alt="Quiero orar por ti" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="assets/img/img4.jpg" alt="Alabanza" loading="lazy">
+    </div>
+    <div class="g-item wide">
+      <img src="assets/img/img7.jpg" alt="Jóvenes" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="assets/img/img8.jpg" alt="Bienvenida" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="assets/img/img10.jpg" alt="Coffee bar" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ── INVOLÚCRATE ── -->
+<section id="involucrate" class="tex">
+  <div class="involucrate-inner">
+    <h2 class="section-heading">Involúcrate</h2>
+    <div class="invol-grid">
+
+      <a href="https://forms.office.com/r/06fsU5ZsWW" target="_blank" class="invol-card">
+        <div class="ic-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Servidores</h3>
+        <p>Usa tus talentos para servir en producción, recepción, niños y más ministerios.</p>
+      </a>
+
+      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Up-aUa5Gd0yq7aIgyrkoFcSZtog9oGxNvlQPto1i0N5UQjhDM1FEODJKWUJLVDJYT0dHREFZUTlLOC4u" target="_blank" class="invol-card">
+        <div class="ic-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Liberación</h3>
+        <p>El sacrificio de Cristo te dio libertad. Solicita una sesión de intercesión personal.</p>
+      </a>
+
+      <a href="https://graciayfeiglesia.org/nuestros-grupos/" target="_blank" class="invol-card">
+        <div class="ic-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Grupos de vida</h3>
+        <p>Conéctate con otros en hogares cada semana. Comunidad real.</p>
+      </a>
+
+      <a href="https://www.instagram.com/comunidadgyf/" target="_blank" class="invol-card">
+        <div class="ic-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <h3>Comunidad GYF</h3>
+        <p>Apoyamos a personas en situación vulnerable con despensas y amor.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── UBICACIÓN ── -->
+<section id="ubicacion">
+  <div class="ubicacion-inner">
+    <h2 class="section-heading">¿Dónde estamos?</h2>
+    <div class="ubic-grid">
+
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588!2d-99.143!3d23.737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ0JzEzLjIiTiA5OcKwMDgnMzQuOCJX!5e0!3m2!1ses!2smx!4v1"
+          allowfullscreen loading="lazy" title="Ubicación Gracia y Fe Iglesia">
+        </iframe>
+      </div>
+
+      <div class="ubic-info">
+        <div class="ubic-row">
+          <h4>Dirección</h4>
+          <p>Gral. Lázaro Cárdenas Eje Vial Nte. – Sur<br>Ascensión Gómez Mancilla, 87040<br>Cd. Victoria, Tamps., México</p>
+        </div>
+        <div class="ubic-row">
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank">(+52) 834 102 5526</a></p>
+        </div>
+        <div class="ubic-row">
+          <h4>Correo</h4>
+          <p><a href="mailto:contacto@graciayfeiglesia.org">contacto@graciayfeiglesia.org</a></p>
+        </div>
+        <a href="https://maps.app.goo.gl/N7e3Mpmh6NWbKNyk7" target="_blank" class="btn-solid" style="align-self:flex-start">
+          Cómo llegar ↗
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="footer">
+  <div class="footer-socials">
+    <a href="https://www.facebook.com/graciayfeiglesia" target="_blank" class="soc-link" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/graciayfeiglesia/" target="_blank" class="soc-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg>
+    </a>
+    <a href="https://www.youtube.com/channel/UCwLsinCgFSqcqne2tASgx5g" target="_blank" class="soc-link" aria-label="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.47A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a"/></svg>
+    </a>
+    <a href="https://open.spotify.com/show/4KK7rXncb8UxVLMzXfYHlX" target="_blank" class="soc-link" aria-label="Spotify">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-1 4-1 4 1 4 1M7.5 12s2-1.5 4.5-1.5S16.5 12 16.5 12M7 9s2.5-2 5-2 5 2 5 2" stroke-linecap="round"/></svg>
+    </a>
+  </div>
+
+  <p class="footer-name">Gracia y Fe Iglesia</p>
+
+  <div class="footer-addr">
+    <p>Gral. Lázaro Cárdenas Eje Vial Nte. – Sur, Ascensión Gómez Mancilla, 87040</p>
+    <p>Cd. Victoria, Tamps., México</p>
+    <p style="margin-top:10px">
+      <a href="https://wa.me/message/S4AIA3QVYCMQF1">(+52) 834 102 5526</a>
+    </p>
+  </div>
+
+  <p class="footer-copy">© 2025 Gracia y Fe Iglesia · graciayfeiglesia.com</p>
+</footer>
+
+<script>
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Hero slideshow
+  const slides = document.querySelectorAll('.hero-slide');
+  let cur = 0;
+  setInterval(() => {
+    slides[cur].classList.remove('active');
+    cur = (cur + 1) % slides.length;
+    slides[cur].classList.add('active');
+  }, 5000);
+
+  // Nav active on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.querySelectorAll('a').forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => obs.observe(s));
+
+  // Nav bg on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.background =
+      window.scrollY > 60 ? 'rgba(10,10,10,0.99)' : 'rgba(10,10,10,0.96)';
+  });
+</script>
+</body>
+</html>

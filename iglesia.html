@@ -91,10 +91,10 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 .footer-addr{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.8;font-weight:500;}
 .footer-copy{margin-top:24px;font-size:11px;color:rgba(255,255,255,0.15);}
 
-.min-photo-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:100%;gap:2px;}
-.min-photo-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;}
-.min-photo-grid img:first-child{grid-column:span 2;}
-.min-block:hover .min-photo-grid img{transform:scale(1.04);}
+.min-block-img,.min-card-img{position:relative;overflow:hidden;}
+.slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease-in-out;}
+.slide-img.active{opacity:1;}
+.min-block:hover .slide-img.active{transform:scale(1.03);transition:opacity 1s ease-in-out,transform 6s ease;}
 
 /* RESPONSIVE */
 @media(max-width:800px){
@@ -204,8 +204,10 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 
   <!-- SOZO — grande -->
   <div class="min-block">
-    <div class="min-block-img">
-      <img src="assets/img/sozo10.jpg" alt="Sozo Jóvenes">
+    <div class="min-block-img" data-slides="assets/img/sozo10.jpg,assets/img/sozo3.jpg,assets/img/img7.jpg">
+      <img class="slide-img active" src="assets/img/sozo10.jpg" alt="Sozo Jóvenes">
+      <img class="slide-img" src="assets/img/sozo3.jpg" alt="Sozo Jóvenes">
+      <img class="slide-img" src="assets/img/img7.jpg" alt="Sozo Jóvenes">
     </div>
     <div class="min-block-text">
       <p class="min-badge">Jóvenes 18+</p>
@@ -231,8 +233,10 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
         @ellas_gyf ↗
       </a>
     </div>
-    <div class="min-block-img">
-      <img src="assets/img/img21.jpg" alt="Ellas">
+    <div class="min-block-img" data-slides="assets/img/img21.jpg,assets/img/img11.jpg,assets/img/img13.jpg">
+      <img class="slide-img active" src="assets/img/img21.jpg" alt="Ellas">
+      <img class="slide-img" src="assets/img/img11.jpg" alt="Ellas">
+      <img class="slide-img" src="assets/img/img13.jpg" alt="Ellas">
     </div>
   </div>
 
@@ -240,11 +244,12 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <!-- MATRIMONIOS — grande -->
   <div class="min-block" style="margin-top:4px;">
     <div class="min-block-img">
-      <div class="min-photo-grid">
-        <img src="assets/img/matrimonios1.jpg" alt="Matrimonios GYF">
-        <img src="assets/img/matrimonios2.jpg" alt="Matrimonios GYF">
-        <img src="assets/img/matrimonios3.jpg" alt="Matrimonios GYF">
-      </div>
+      <img class="slide-img active" src="assets/img/matrimonios1.jpg" alt="Matrimonios GYF">
+      <img class="slide-img" src="assets/img/matrimonios2.jpg" alt="Matrimonios GYF">
+      <img class="slide-img" src="assets/img/matrimonios3.jpg" alt="Matrimonios GYF">
+      <img class="slide-img" src="assets/img/matrimonios4.jpg" alt="Matrimonios GYF">
+      <img class="slide-img" src="assets/img/matrimonios5.jpg" alt="Matrimonios GYF">
+      <img class="slide-img" src="assets/img/matrimonios6.jpg" alt="Matrimonios GYF">
     </div>
     <div class="min-block-text">
       <p class="min-badge">Parejas</p>
@@ -258,18 +263,15 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </div>
   </div>
 
-  <!-- GALERÍA MATRIMONIOS -->
-  <div style="max-width:1040px;margin:4px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
-    <img src="assets/img/matrimonios4.jpg" alt="Matrimonios GYF" style="width:100%;height:220px;object-fit:cover;display:block;">
-    <img src="assets/img/matrimonios5.jpg" alt="Matrimonios GYF" style="width:100%;height:220px;object-fit:cover;display:block;">
-    <img src="assets/img/matrimonios6.jpg" alt="Matrimonios GYF" style="width:100%;height:220px;object-fit:cover;display:block;">
-  </div>
-
   <!-- GRID PEQUEÑOS -->
   <div class="min-grid">
 
     <a href="https://www.instagram.com/t412ad" target="_blank" class="min-card">
-      <div class="min-card-img"><img src="assets/img/t412_4.jpg" alt="T412 Adolescentes" loading="lazy"></div>
+      <div class="min-card-img">
+        <img class="slide-img active" src="assets/img/t412_4.jpg" alt="T412" loading="lazy">
+        <img class="slide-img" src="assets/img/t412_7.jpg" alt="T412" loading="lazy">
+        <img class="slide-img" src="assets/img/t412_6.jpg" alt="T412" loading="lazy">
+      </div>
       <div class="min-card-overlay"></div>
       <div class="min-card-content">
         <p class="min-badge">Secundaria y Preparatoria</p>
@@ -290,7 +292,11 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </div>
 
     <a href="https://www.instagram.com/legadogyf" target="_blank" class="min-card">
-      <div class="min-card-img"><img src="assets/img/legado3.jpg" alt="Legado Hombres" loading="lazy"></div>
+      <div class="min-card-img">
+        <img class="slide-img active" src="assets/img/legado3.jpg" alt="Legado" loading="lazy">
+        <img class="slide-img" src="assets/img/legado5.jpg" alt="Legado" loading="lazy">
+        <img class="slide-img" src="assets/img/legado6.jpg" alt="Legado" loading="lazy">
+      </div>
       <div class="min-card-overlay"></div>
       <div class="min-card-content">
         <p class="min-badge">Reunión de Hombres</p>
@@ -301,7 +307,11 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </a>
 
     <a href="https://www.instagram.com/kids_gyf" target="_blank" class="min-card">
-      <div class="min-card-img"><img src="assets/img/ninos10.jpg" alt="Niños GYF" loading="lazy"></div>
+      <div class="min-card-img">
+        <img class="slide-img active" src="assets/img/ninos10.jpg" alt="Niños GYF" loading="lazy">
+        <img class="slide-img" src="assets/img/ninos5.jpg" alt="Niños GYF" loading="lazy">
+        <img class="slide-img" src="assets/img/ninos9.jpg" alt="Niños GYF" loading="lazy">
+      </div>
       <div class="min-card-overlay"></div>
       <div class="min-card-content">
         <p class="min-badge">3 a 11 años</p>
@@ -312,7 +322,11 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </a>
 
     <div class="min-card">
-      <div class="min-card-img"><img src="assets/img/matrimonios1.jpg" alt="Matrimonios GYF" loading="lazy"></div>
+      <div class="min-card-img">
+        <img class="slide-img active" src="assets/img/matrimonios1.jpg" alt="Matrimonios GYF" loading="lazy">
+        <img class="slide-img" src="assets/img/matrimonios4.jpg" alt="Matrimonios GYF" loading="lazy">
+        <img class="slide-img" src="assets/img/matrimonios6.jpg" alt="Matrimonios GYF" loading="lazy">
+      </div>
       <div class="min-card-overlay"></div>
       <div class="min-card-content">
         <p class="min-badge">Parejas</p>
@@ -362,10 +376,27 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </footer>
 
 <script>
+// Nav
 const ham = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 ham.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Auto-slideshow para todos los contenedores con .slide-img
+document.querySelectorAll('.min-block-img, .min-card-img').forEach(container => {
+  const slides = container.querySelectorAll('.slide-img');
+  if (slides.length < 2) return;
+  let current = 0;
+  // Stagger start times so not all slideshows fire at once
+  const offset = Math.random() * 3000;
+  setTimeout(() => {
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3500);
+  }, offset);
+});
 </script>
 </body>
 </html>

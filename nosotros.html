@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosotros — Gracia y Fe Iglesia</title>
+<style>
+@font-face { font-family:'Gotham'; src:url('assets/fonts/GothamMedium.ttf') format('truetype'); font-weight:500; }
+@font-face { font-family:'Gotham'; src:url('assets/fonts/GothamBold.ttf') format('truetype'); font-weight:700; }
+@font-face { font-family:'Gotham'; src:url('assets/fonts/Gotham_Black_Regular.ttf') format('truetype'); font-weight:900; }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--nav-h:68px;}
+html{scroll-behavior:smooth;}
+body{font-family:'Gotham','Montserrat',sans-serif;background:#0d0d0d;color:#fff;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;padding:0 40px;background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff;flex-shrink:0;margin-right:44px;}
+.logo-img{height:38px;width:auto;display:block;}
+.logo-name{font-size:14.5px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;}
+.nav-links{display:flex;gap:30px;list-style:none;flex:1;justify-content:center;}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,0.78);font-size:12px;font-weight:700;letter-spacing:0.8px;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.hamburger{display:none;background:none;border:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#fff;}
+
+/* HERO */
+.page-hero{height:50vh;min-height:320px;position:relative;display:flex;align-items:flex-end;padding-bottom:60px;padding-left:60px;margin-top:var(--nav-h);}
+.page-hero-bg{position:absolute;inset:0;background:url('assets/img/img6.jpg') center/cover no-repeat;}
+.page-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,1) 0%,rgba(0,0,0,0.5) 60%,rgba(0,0,0,0.3) 100%);}
+.page-hero-content{position:relative;z-index:2;}
+.page-eyebrow{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:12px;}
+.page-title{font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:4px;text-transform:uppercase;line-height:1;}
+
+/* TABS */
+.tabs-wrap{background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,0.08);position:sticky;top:var(--nav-h);z-index:50;}
+.tabs{display:flex;max-width:1040px;margin:0 auto;padding:0 40px;}
+.tab-btn{background:none;border:none;color:rgba(255,255,255,0.45);font-family:'Gotham',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:20px 0;margin-right:40px;cursor:pointer;position:relative;transition:color 0.2s;}
+.tab-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#fff;transform:scaleX(0);transition:transform 0.2s;}
+.tab-btn.active{color:#fff;}
+.tab-btn.active::after{transform:scaleX(1);}
+.tab-btn:hover{color:rgba(255,255,255,0.8);}
+
+/* CONTENT */
+.tab-content{display:none;max-width:1040px;margin:0 auto;padding:72px 40px;}
+.tab-content.active{display:block;}
+
+/* PASTORES */
+.pastores-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.pastores-img{border-radius:2px;overflow:hidden;}
+.pastores-img img{width:100%;display:block;object-fit:cover;}
+.pastores-info .label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px;}
+.pastores-info h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:3px;text-transform:uppercase;line-height:1.05;margin-bottom:8px;}
+.pastores-info .cargo{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;}
+.divider{width:50px;height:2px;background:rgba(255,255,255,0.2);margin-bottom:28px;}
+.pastores-info p{font-size:15px;font-weight:500;line-height:1.85;color:rgba(255,255,255,0.65);}
+
+/* VISION MISION */
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.vm-card{background:#111;padding:56px 48px;}
+.vm-card .vm-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:20px;}
+.vm-card h3{font-size:clamp(24px,3.5vw,40px);font-weight:900;letter-spacing:3px;text-transform:uppercase;line-height:1.1;margin-bottom:24px;}
+.vm-card p{font-size:15px;font-weight:500;line-height:1.85;color:rgba(255,255,255,0.6);}
+
+/* EN ESTO CREEMOS */
+.creemos-header{text-align:center;margin-bottom:64px;}
+.creemos-header .logo-gyf{width:80px;margin:0 auto 24px;}
+.creemos-header h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
+.creemos-header .sub{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,0.35);text-transform:uppercase;}
+
+.verse-big{text-align:center;padding:48px;background:#111;margin-bottom:56px;}
+.verse-big p{font-size:clamp(16px,2.5vw,22px);font-style:italic;color:rgba(255,255,255,0.7);line-height:1.7;max-width:640px;margin:0 auto 16px;}
+.verse-big span{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+
+.creemos-intro{font-size:16px;font-weight:500;line-height:1.85;color:rgba(255,255,255,0.65);max-width:720px;margin:0 auto 56px;text-align:center;}
+
+.doctrina{background:#111;padding:48px;margin-bottom:3px;}
+.doctrina h3{font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.doctrina p{font-size:14px;font-weight:500;line-height:1.85;color:rgba(255,255,255,0.6);}
+
+/* FOOTER */
+footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40px;text-align:center;margin-top:80px;}
+.footer-socials{display:flex;justify-content:center;gap:18px;margin-bottom:20px;}
+.soc-link{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(255,255,255,0.55);transition:all 0.2s;}
+.soc-link:hover{border-color:rgba(255,255,255,0.5);color:#fff;}
+.soc-link svg{width:16px;height:16px;fill:currentColor;}
+.footer-name{font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.footer-addr{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.8;font-weight:500;}
+.footer-copy{margin-top:24px;font-size:11px;color:rgba(255,255,255,0.15);}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(10,10,10,0.98);padding:12px 20px 24px;gap:0;border-bottom:1px solid rgba(255,255,255,0.07);z-index:99;}
+  .nav-links.open li{border-bottom:1px solid rgba(255,255,255,0.05);}
+  .nav-links.open a{display:block;padding:13px 0;}
+  .hamburger{display:flex;}
+  .page-hero{padding-left:24px;padding-bottom:40px;}
+  .tabs{padding:0 20px;overflow-x:auto;}
+  .tab-btn{margin-right:24px;white-space:nowrap;}
+  .tab-content{padding:48px 20px;}
+  .pastores-grid{grid-template-columns:1fr;}
+  .vm-grid{grid-template-columns:1fr;}
+  .vm-card{padding:36px 24px;}
+  footer{padding:40px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo.png" alt="GYF" class="logo-img">
+    <span class="logo-name">Gracia y Fe Iglesia</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="nosotros.html" class="active">Nosotros</a></li>
+    <li><a href="index.html#ubicacion">Ubicación</a></li>
+    <li><a href="index.html#horarios">Iglesia</a></li>
+    <li><a href="index.html#eventos">Eventos</a></li>
+    <li><a href="index.html#involucrate">Escuela</a></li>
+    <li><a href="index.html#involucrate">Involúcrate</a></li>
+    <li><a href="index.html#footer">Donativos</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">Gracia y Fe Iglesia</p>
+    <h1 class="page-title">Nosotros</h1>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('pastores', this)">Nuestros Pastores</button>
+    <button class="tab-btn" onclick="showTab('vision', this)">Visión / Misión</button>
+    <button class="tab-btn" onclick="showTab('creemos', this)">En esto creemos</button>
+  </div>
+</div>
+
+<!-- TAB: PASTORES -->
+<div class="tab-content active" id="tab-pastores">
+  <div class="pastores-grid">
+    <div class="pastores-img">
+      <img src="assets/img/pastores.jpg" alt="Pastores Sofía y Ebrahim Carcur">
+    </div>
+    <div class="pastores-info">
+      <p class="label">Liderazgo</p>
+      <h2>Sofía y Ebrahim<br>Carcur</h2>
+      <p class="cargo">Pastores Fundadores · Desde 2017</p>
+      <div class="divider"></div>
+      <p>Sofía y Ebrahim Carcur son los pastores fundadores de Gracia y Fe Iglesia desde el 2017, en Ciudad Victoria Tamaulipas.</p>
+      <br>
+      <p>Gracia y Fe nace con el deseo de ser un lugar donde cada persona pueda crecer en su fe, encontrar propósito y vivir una relación genuina con Jesús, centrada en la gracia, fundamentada en la fe y comprometida con impactar positivamente a las familias y a nuestra sociedad.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: VISIÓN / MISIÓN -->
+<div class="tab-content" id="tab-vision">
+  <div class="vm-grid">
+    <div class="vm-card">
+      <p class="vm-label">Misión</p>
+      <h3>Transformar vidas mediante el evangelio de la Gracia y Fe en Jesús</h3>
+      <p>Todo lo que hacemos — nuestros servicios, ministerios y comunidad — nace de este propósito central: ver vidas transformadas por el poder del evangelio.</p>
+    </div>
+    <div class="vm-card">
+      <p class="vm-label">Visión</p>
+      <h3>Edificar una iglesia global que sea transformada por conocer a Jesús</h3>
+      <p>Soñamos con una comunidad que trascienda fronteras, donde cada persona pueda conocer a Jesús y ser transformada por Él para impactar su mundo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: EN ESTO CREEMOS -->
+<div class="tab-content" id="tab-creemos">
+  <div class="creemos-header">
+    <h2>Gracia y Fe Iglesia A.R.</h2>
+    <p class="sub">Lo que creemos</p>
+  </div>
+
+  <div class="verse-big">
+    <p>"Dios los salvó por su gracia cuando creyeron. Ustedes no tienen ningún mérito en eso; es un regalo de Dios."</p>
+    <span>— Efesios 2:8-9</span>
+  </div>
+
+  <p class="creemos-intro">Somos una comunidad de personas cuyas vidas han sido transformadas por el evangelio de la Gracia y Fe en Jesús. Caminamos juntos compartiendo esperanza, propósito y nuevas oportunidades. Creemos en el poder del cambio real cuando las personas conocen a Cristo.</p>
+
+  <div class="doctrina">
+    <h3>La Salvación</h3>
+    <p>Es el acto amoroso mediante el cual Dios rescata al ser humano del pecado y de la separación espiritual que este produce. No se trata solo de un cambio de conducta o de una mejora moral, sino de una transformación profunda del corazón y de la restauración de nuestra relación con Dios.</p>
+    <br>
+    <p>La Biblia enseña que todos hemos pecado y estamos lejos de la gloria de Dios, y por esa razón necesitamos ser salvos. Aunque tratemos de hacer lo correcto, no podemos ser completamente justos por nuestras propias fuerzas. El pecado trae consecuencias y nos aleja de Dios, pero Él no nos dejó solos.</p>
+    <br>
+    <p>Jesús murió en la cruz y resucitó para pagar el precio de nuestros pecados. Gracias a ese sacrificio, Dios nos ofrece perdón y una vida nueva. Esto es lo que se conoce como la gracia de Dios: un regalo que no merecemos, pero que Él nos da libremente. La salvación no depende de lo que hacemos, sino de lo que Jesús ya hizo por nosotros.</p>
+    <br>
+    <p>Ser salvo significa creer en Jesucristo, reconocer nuestros errores y decidir seguirlo. Cuando una persona acepta a Jesús en su corazón, Dios la perdona y comienza a transformar su vida. Esa transformación se nota en la forma de pensar, de actuar y de amar a los demás.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-socials">
+    <a href="https://www.facebook.com/graciayfeiglesia" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/graciayfeiglesia/" target="_blank" class="soc-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg></a>
+    <a href="https://www.youtube.com/channel/UCwLsinCgFSqcqne2tASgx5g" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.47A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a"/></svg></a>
+    <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+  </div>
+  <p class="footer-name">Gracia y Fe Iglesia</p>
+  <div class="footer-addr">
+    <p>Gral. Lázaro Cárdenas Eje Vial Nte. – Sur, Ascensión Gómez Mancilla, 87040</p>
+    <p>Cd. Victoria, Tamps., México · (+52) 834 102 5526</p>
+  </div>
+  <p class="footer-copy">© 2025 Gracia y Fe Iglesia · graciayfeiglesia.com</p>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const ham = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>

@@ -453,6 +453,12 @@ footer {
   .videos-row { grid-template-columns: 1fr; }
   .hero-title { letter-spacing: 2px; }
 }
+
+.nav-item{position:relative;}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown{display:flex;}
+.dropdown{display:none;flex-direction:column;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(10,10,10,0.98);border:1px solid rgba(255,255,255,0.08);min-width:210px;z-index:200;padding:8px 0;}
+.dropdown a{display:block;padding:12px 20px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.dropdown a:hover{color:#fff;background:rgba(255,255,255,0.05);}
 </style>
 </head>
 <body>
@@ -465,12 +471,19 @@ footer {
   </a>
   <ul class="nav-links" id="nav-links">
     <li><a href="nosotros.html">Nosotros</a></li>
-    <li><a href="#ubicacion">Ubicación</a></li>
-    <li><a href="iglesia.html" class="active">Iglesia<span class="nav-dot"></span></a></li>
-    <li><a href="#eventos">Eventos<span class="nav-dot"></span></a></li>
-    <li><a href="#involucrate">Escuela</a></li>
-    <li><a href="#involucrate">Involúcrate</a></li>
-    <li><a href="#footer">Donativos</a></li>
+    <li><a href="index.html#ubicacion">Ubicación</a></li>
+    <li class="nav-item">
+      <a href="iglesia.html">Iglesia ▾</a>
+      <div class="dropdown">
+        <a href="iglesia.html">Ministerios</a>
+        <a href="liberacion.html">Liberación</a>
+        <a href="servicios-pastorales.html">Servicios Pastorales</a>
+      </div>
+    </li>
+    <li><a href="index.html#eventos">Eventos</a></li>
+    <li><a href="index.html#involucrate">Escuela</a></li>
+    <li><a href="index.html#involucrate">Involúcrate</a></li>
+    <li><a href="index.html#footer">Donativos</a></li>
   </ul>
   <button class="nav-search" aria-label="Buscar">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>

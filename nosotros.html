@@ -106,6 +106,12 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   .vm-card{padding:36px 24px;}
   footer{padding:40px 20px;}
 }
+
+.nav-item{position:relative;}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown{display:flex;}
+.dropdown{display:none;flex-direction:column;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(10,10,10,0.98);border:1px solid rgba(255,255,255,0.08);min-width:210px;z-index:200;padding:8px 0;}
+.dropdown a{display:block;padding:12px 20px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.dropdown a:hover{color:#fff;background:rgba(255,255,255,0.05);}
 </style>
 </head>
 <body>
@@ -116,9 +122,16 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <span class="logo-name">Gracia y Fe Iglesia</span>
   </a>
   <ul class="nav-links" id="nav-links">
-    <li><a href="nosotros.html" class="active">Nosotros</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
     <li><a href="index.html#ubicacion">Ubicación</a></li>
-    <li><a href="index.html#horarios">Iglesia</a></li>
+    <li class="nav-item">
+      <a href="iglesia.html">Iglesia ▾</a>
+      <div class="dropdown">
+        <a href="iglesia.html">Ministerios</a>
+        <a href="liberacion.html">Liberación</a>
+        <a href="servicios-pastorales.html">Servicios Pastorales</a>
+      </div>
+    </li>
     <li><a href="index.html#eventos">Eventos</a></li>
     <li><a href="index.html#involucrate">Escuela</a></li>
     <li><a href="index.html#involucrate">Involúcrate</a></li>

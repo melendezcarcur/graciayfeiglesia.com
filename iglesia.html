@@ -67,7 +67,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 
 /* Grid de ministerios pequeños */
 .min-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4px;max-width:1040px;margin:4px auto 0;}
-.min-card{background:#111;overflow:hidden;position:relative;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;}
+.min-card{background:#111;overflow:hidden;position:relative;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:#fff;}
 .min-card-img{position:absolute;inset:0;}
 .min-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
 .min-card:hover .min-card-img img{transform:scale(1.05);}
@@ -76,9 +76,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .min-card .min-badge{margin-bottom:8px;}
 .min-card .min-name{font-size:18px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
 .min-card .min-horario{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0;}
-.min-ig{display:block;margin-top:8px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;}
-.min-card[href]:hover .min-ig{color:rgba(255,255,255,0.9);}
-.min-ig-link{display:inline-flex;align-items:center;gap:8px;margin-top:24px;color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color 0.2s;}
+.min-ig{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,0.45);text-transform:uppercase;text-decoration:none;}
+.min-card:hover .min-ig{color:rgba(255,255,255,0.8);}
+.min-ig-link{display:inline-flex;align-items:center;gap:8px;margin-top:24px;color:rgba(255,255,255,0.45);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color 0.2s;border:none;background:none;}
 .min-ig-link:hover{color:#fff;}
 
 /* FOOTER */
@@ -194,7 +194,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       <p class="min-horario">Jueves · 7:15 PM</p>
       <p class="min-desc">Un espacio diseñado para jóvenes mayores de 18 años donde crecemos en nuestra fe, construimos comunidad y vivimos una relación genuina con Jesús. Sozo es tu lugar para conectar, crecer y ser transformado.</p>
       <a href="https://www.instagram.com/sozo_gyf" target="_blank" class="min-ig-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg>
         @sozo_gyf ↗
       </a>
     </div>
@@ -208,12 +208,12 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       <p class="min-horario">Martes · 5:30 PM</p>
       <p class="min-desc">Un lugar seguro donde las mujeres se reúnen para crecer espiritualmente, fortalecer su fe y construir amistades genuinas. Ellas es comunidad, palabra y propósito para cada mujer.</p>
       <a href="https://www.instagram.com/ellas_gyf" target="_blank" class="min-ig-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg>
         @ellas_gyf ↗
       </a>
     </div>
     <div class="min-block-img">
-      <img src="assets/img/img11.jpg" alt="Ellas">
+      <img src="assets/img/img21.jpg" alt="Ellas">
     </div>
   </div>
 
@@ -253,7 +253,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </a>
 
     <a href="https://www.instagram.com/kids_gyf" target="_blank" class="min-card">
-      <div class="min-card-img"><img src="assets/img/img7.jpg" alt="Niños GYF" loading="lazy"></div>
+      <div class="min-card-img"><img src="assets/img/ninos10.jpg" alt="Niños GYF" loading="lazy"></div>
       <div class="min-card-overlay"></div>
       <div class="min-card-content">
         <p class="min-badge">3 a 11 años</p>

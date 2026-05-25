@@ -89,6 +89,8 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 .footer-addr{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.8;font-weight:500;}
 .footer-copy{margin-top:24px;font-size:11px;color:rgba(255,255,255,0.15);}
 
+.nav-red > a{background:rgba(185,28,28,0.85);color:#fff !important;padding:6px 14px !important;border-radius:2px;transition:background 0.2s !important;}
+.nav-red > a:hover{background:rgba(220,38,38,1) !important;}
 /* RESPONSIVE */
 @media(max-width:800px){
   nav{padding:0 20px;}
@@ -128,15 +130,21 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <li class="nav-item">
       <a href="iglesia.html">Iglesia ▾</a>
       <div class="dropdown">
-        <a href="iglesia.html">Ministerios</a>
-        <a href="liberacion.html">Liberación</a>
+        <a href="iglesia.html">Grupos</a>
         <a href="servicios-pastorales.html">Servicios Pastorales</a>
+        <a href="involucrate.html">Involúcrate</a>
       </div>
     </li>
     <li><a href="eventos.html">Eventos</a></li>
     <li><a href="escuela.html">Escuela</a></li>
-    <li><a href="involucrate.html">Involúcrate</a></li>
-    <li><a href="donativos.html">Donativos</a></li>
+    <li class="nav-red"><a href="liberacion.html">Liberación</a></li>
+    <li class="nav-item">
+      <a href="donativos.html">Donativos ▾</a>
+      <div class="dropdown">
+        <a href="donativos.html">Donativos</a>
+        <a href="https://www.instagram.com/comunidadgyf/" target="_blank">Comunidad GYF ↗</a>
+      </div>
+    </li>
   </ul>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>

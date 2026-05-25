@@ -273,33 +273,7 @@ nav {
 .h-time { font-size: 38px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
 .h-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 8px; font-weight: 500; }
 
-/* ── GALLERY ── */
-#galeria { padding: 0; }
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  gap: 3px;
-}
-
-.g-item {
-  overflow: hidden; position: relative;
-  aspect-ratio: 1;
-  background: #1a1a1a;
-}
-
-.g-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
-.g-item.tall { grid-row: span 2; aspect-ratio: 1/2; }
-
-.g-item img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.5s ease; display: block;
-}
-
-.g-item:hover img { transform: scale(1.04); }
-
-/* ── INVOLÚCRATE ── */
+/* ── UBICACIÓN ── */
 #involucrate { padding: 80px 40px; }
 .involucrate-inner { max-width: 1040px; margin: 0 auto; }
 
@@ -437,19 +411,15 @@ footer {
 
   .horarios-grid { grid-template-columns: repeat(2,1fr); }
 
-  .gallery-grid { grid-template-columns: repeat(2,1fr); }
-  .g-item.wide, .g-item.tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
 
   .ubic-grid { grid-template-columns: 1fr; }
-  .invol-grid { grid-template-columns: 1fr 1fr; }
 
-  #recientes, #horarios, #involucrate, #ubicacion { padding: 64px 20px; }
+  #recientes, #horarios, #ubicacion { padding: 64px 20px; }
   footer { padding: 48px 20px 28px; }
 }
 
 @media (max-width: 540px) {
   .horarios-grid { grid-template-columns: 1fr 1fr; }
-  .invol-grid { grid-template-columns: 1fr; }
   .videos-row { grid-template-columns: 1fr; }
   .hero-title { letter-spacing: 2px; }
 }
@@ -619,146 +589,8 @@ footer {
   </div>
 </section>
 
-<!-- ── GALERÍA ── -->
-<section id="galeria">
-  <div class="gallery-grid">
-    <div class="g-item wide">
-      <img src="assets/img/img5.jpg" alt="Congregación adorando" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img1.jpg" alt="Adoración" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img9.jpg" alt="Adoración" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img3.jpg" alt="Quiero orar por ti" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img4.jpg" alt="Alabanza" loading="lazy">
-    </div>
-    <div class="g-item wide">
-      <img src="assets/img/img7.jpg" alt="Jóvenes" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img8.jpg" alt="Bienvenida" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img10.jpg" alt="Coffee bar" loading="lazy">
-    </div>
-    <div class="g-item wide">
-      <img src="assets/img/img21.jpg" alt="Ellas GYF" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img11.jpg" alt="Ellas GYF" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img12.jpg" alt="Comunidad" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img13.jpg" alt="Ellas congreso" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img14.jpg" alt="Comunidad GYF" loading="lazy">
-    </div>
-    <div class="g-item wide">
-      <img src="assets/img/img20.jpg" alt="Auditorio" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img15.jpg" alt="Ellas GYF" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img16.jpg" alt="Comunidad" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img17.jpg" alt="Ellas GYF" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="assets/img/img18.jpg" alt="Comunidad GYF" loading="lazy">
-    </div>
-    <div class="g-item wide">
-      <img src="assets/img/img19.jpg" alt="Ellas congreso" loading="lazy">
-    </div>
-  </div>
-</section>
 
-<!-- ── EVENTOS ── -->
-<section id="eventos" class="tex">
-  <div style="max-width:1040px;margin:0 auto;padding:80px 40px;">
-    <h2 class="section-heading">Próximos eventos</h2>
-    <div style="display:flex;flex-direction:column;gap:3px;margin-top:48px;">
 
-      <div style="display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:center;background:#111;border-left:3px solid transparent;transition:border-color 0.2s;overflow:hidden;" onmouseover="this.style.borderLeftColor='#fff'" onmouseout="this.style.borderLeftColor='transparent'">
-        <div style="text-align:center;padding:28px 0 28px 32px;border-right:1px solid rgba(255,255,255,0.08);flex-shrink:0;">
-          <div style="font-family:'Gotham',sans-serif;font-size:42px;font-weight:900;color:#fff;line-height:1;">12</div>
-          <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px;">Jun</div>
-        </div>
-        <div style="padding:0 8px;">
-          <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:8px;">Ministerio Ellas GYF</div>
-          <div style="font-size:17px;font-weight:900;letter-spacing:1px;margin-bottom:6px;">Congreso ELLAS 2026</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;margin-bottom:12px;">Gracia y Fe Iglesia · Cd. Victoria, Tamps. · 12 y 13 de Junio</div>
-          <img src="assets/img/ellas2026.jpg" alt="Congreso Ellas 2026 - Tu historia tiene un final Feliz" style="width:100%;max-width:480px;border-radius:4px;display:block;">
-        </div>
-        <div style="padding:28px 32px 28px 8px;flex-shrink:0;">
-          <a href="https://www.eventbrite.com/e/congreso-ellas-2026-tickets-1984826798384" target="_blank" style="background:#fff;color:#0d0d0d;font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;text-decoration:none;white-space:nowrap;font-family:'Gotham',sans-serif;display:block;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.85)'" onmouseout="this.style.background='#fff'">
-            Registrarme ↗
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── INVOLÚCRATE ── -->
-<section id="involucrate" class="tex">
-  <div class="involucrate-inner">
-    <h2 class="section-heading">Involúcrate</h2>
-    <div class="invol-grid">
-
-      <a href="https://forms.office.com/r/06fsU5ZsWW" target="_blank" class="invol-card">
-        <div class="invol-card-bg" style="background-image:url('assets/img/servidores.jpg')"></div>
-        <div class="invol-card-overlay"></div>
-        <div class="invol-card-content">
-          <div class="ic-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Servidores</h3>
-          <p>Usa tus talentos para servir en producción, recepción, niños y más ministerios.</p>
-        </div>
-      </a>
-
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Up-aUa5Gd0yq7aIgyrkoFcSZtog9oGxNvlQPto1i0N5UQjhDM1FEODJKWUJLVDJYT0dHREFZUTlLOC4u" target="_blank" class="invol-card">
-        <div class="invol-card-bg" style="background-image:url('assets/img/img3.jpg')"></div>
-        <div class="invol-card-overlay"></div>
-        <div class="invol-card-content">
-          <div class="ic-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-          <h3>Liberación</h3>
-          <p>El sacrificio de Cristo te dio libertad. Solicita una sesión de intercesión personal.</p>
-        </div>
-      </a>
-
-      <a href="https://graciayfeiglesia.org/nuestros-grupos/" target="_blank" class="invol-card">
-        <div class="invol-card-bg" style="background-image:url('assets/img/img2.jpg')"></div>
-        <div class="invol-card-overlay"></div>
-        <div class="invol-card-content">
-          <div class="ic-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <h3>Grupos de vida</h3>
-          <p>Conéctate con otros en hogares cada semana. Comunidad real.</p>
-        </div>
-      </a>
-
-      <a href="https://www.instagram.com/comunidadgyf/" target="_blank" class="invol-card">
-        <div class="invol-card-bg" style="background-image:url('assets/img/comunidad.jpg')"></div>
-        <div class="invol-card-overlay"></div>
-        <div class="invol-card-content">
-          <div class="ic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-          <h3>Comunidad GYF</h3>
-          <p>Apoyamos a personas en situación vulnerable con despensas y amor.</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
 
 <!-- ── UBICACIÓN ── -->
 <section id="ubicacion">

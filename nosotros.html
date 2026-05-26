@@ -127,6 +127,29 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   background: #dc2626 !important;
   color: #fff !important;
 }
+
+/* ONE-PAGE SCROLL */
+.tab-content { display: block !important; }
+.tab-content + .tab-content { border-top: 1px solid rgba(255,255,255,0.07); margin-top: 0; padding-top: 60px; }
+
+/* PASTOR PHOTO FADE toward text */
+.pastores-img { position: relative; overflow: hidden; }
+.pastores-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pastores-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 40%, #111 100%);
+  pointer-events: none;
+}
+
+/* TABS as anchor links */
+.tabs-wrap { position: sticky; top: 68px; z-index: 50; background: rgba(10,10,10,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.tab-btn { background: none; border: none; cursor: pointer; }
+.tab-btn.active { border-bottom: 2px solid #fff; }
+
+/* Section anchors spacing */
+#tab-pastores, #tab-vision, #tab-creemos { scroll-margin-top: 120px; }
 </style>
 </head>
 <body>
@@ -173,9 +196,9 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 <!-- TABS -->
 <div class="tabs-wrap">
   <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('pastores', this)">Nuestros Pastores</button>
-    <button class="tab-btn" onclick="showTab('vision', this)">Visión / Misión</button>
-    <button class="tab-btn" onclick="showTab('creemos', this)">En esto creemos</button>
+    <a class="tab-btn active" href="#tab-pastores">Nuestros Pastores</a>
+    <a class="tab-btn" href="#tab-vision">Visión / Misión</a>
+    <a class="tab-btn" href="#tab-creemos">En esto creemos</a>
   </div>
 </div>
 
@@ -256,17 +279,18 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </footer>
 
 <script>
-function showTab(id, btn) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  btn.classList.add('active');
-}
-
-const ham = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-ham.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-</script>
+// Highlight tab on scroll
+  const sections = ['tab-pastores','tab-vision','tab-creemos'];
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  window.addEventListener('scroll', () => {
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 150) current = id;
+    });
+    tabBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('href') === '#' + current);
+    });
+  });</script>
 </body>
 </html>

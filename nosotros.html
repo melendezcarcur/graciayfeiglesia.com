@@ -47,9 +47,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .tab-content.active{display:block;}
 
 /* PASTORES */
-.pastores-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-.pastores-img{border-radius:2px;overflow:hidden;}
-.pastores-img img{width:100%;display:block;object-fit:cover;}
+.pastores-grid{position:relative;min-height:85vh;display:flex;align-items:center;overflow:hidden;}
+.pastores-img{position:absolute;inset:0;z-index:0;}
+.pastores-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.pastores-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.15) 40%,rgba(13,13,13,0.92) 65%,rgba(13,13,13,1) 100%);}
+.pastores-info{position:relative;z-index:2;margin-left:auto;width:50%;padding:60px 48px 60px 0;}
 .pastores-info .label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px;}
 .pastores-info h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:3px;text-transform:uppercase;line-height:1.05;margin-bottom:8px;}
 .pastores-info .cargo{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;}
@@ -128,11 +130,6 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   color: #fff !important;
 }
 
-
-/* BIGGER PASTOR PHOTO */
-.pastores-grid { min-height: 600px; }
-.pastores-img { min-height: 600px; }
-.pastores-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 /* ONE-PAGE SCROLL */
 .tab-content { display: block !important; }
 .tab-content + .tab-content { border-top: 1px solid rgba(255,255,255,0.07); margin-top: 0; padding-top: 60px; }
@@ -209,10 +206,10 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </div>
     <div class="pastores-info">
       <p class="label">Liderazgo</p>
-      <h2>Sofía y Ebrahim<br>Carcur</h2>
+      <h2>Ebrahim y Sofía<br>Carcur</h2>
       <p class="cargo">Pastores Fundadores · Desde 2017</p>
       <div class="divider"></div>
-      <p>Sofía y Ebrahim Carcur son los pastores fundadores de Gracia y Fe Iglesia desde el 2017, en Ciudad Victoria Tamaulipas.</p>
+      <p>Ebrahim y Sofía Carcur son los pastores fundadores de Gracia y Fe Iglesia desde el 2017, en Ciudad Victoria Tamaulipas.</p>
       <br>
       <p>Gracia y Fe nace con el deseo de ser un lugar donde cada persona pueda crecer en su fe, encontrar propósito y vivir una relación genuina con Jesús, centrada en la gracia, fundamentada en la fe y comprometida con impactar positivamente a las familias y a nuestra sociedad.</p>
     </div>

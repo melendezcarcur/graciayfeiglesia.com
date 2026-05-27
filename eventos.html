@@ -28,54 +28,57 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .dropdown a:hover{color:#fff;background:rgba(255,255,255,0.05);}
 .hamburger{display:none;background:none;border:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;}
 .hamburger span{display:block;width:22px;height:1.5px;background:#fff;}
+.nav-red > a{background:#b91c1c;color:#fff !important;padding:6px 16px !important;border-radius:3px;letter-spacing:1.5px;}
+.nav-red > a:hover{background:#dc2626 !important;color:#fff !important;}
 
 /* HERO */
-.page-hero{height:50vh;min-height:320px;position:relative;display:flex;align-items:flex-end;padding:0 60px 64px;margin-top:var(--nav-h);}
+.page-hero{height:55vh;min-height:340px;position:relative;display:flex;align-items:flex-end;padding:0 60px 64px;margin-top:var(--nav-h);}
 .hero-bg{position:absolute;inset:0;background:url('assets/img/sozo11.jpg') center/cover no-repeat;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,1) 0%,rgba(0,0,0,0.6) 60%,rgba(0,0,0,0.2) 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,1) 0%,rgba(0,0,0,0.5) 60%,rgba(0,0,0,0.15) 100%);}
 .hero-content{position:relative;z-index:2;}
-.eyebrow{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px;}
-.hero-title{font-size:clamp(40px,7vw,84px);font-weight:900;letter-spacing:4px;text-transform:uppercase;line-height:0.95;}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:14px;}
+.hero-title{font-size:clamp(48px,8vw,96px);font-weight:900;letter-spacing:4px;text-transform:uppercase;line-height:0.92;}
 
-/* EVENTO BLOCKS */
-.evento{display:grid;grid-template-columns:1fr 1fr;min-height:500px;border-bottom:1px solid rgba(255,255,255,0.05);}
-.evento.reverse{direction:rtl;}
-.evento.reverse > *{direction:ltr;}
+/* FEATURED EVENT (first, full-width banner) */
+.ev-featured{position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden;}
+.ev-featured-bg{position:absolute;inset:0;}
+.ev-featured-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 8s ease;}
+.ev-featured:hover .ev-featured-bg img{transform:scale(1.04);}
+.ev-featured-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.5) 45%,rgba(0,0,0,0.1) 100%);}
+.ev-featured-content{position:relative;z-index:2;width:100%;padding:56px 64px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;}
+.ev-featured-left{}
+.ev-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.2);padding:6px 14px;margin-bottom:20px;}
+.ev-featured-title{font-size:clamp(42px,7vw,88px);font-weight:900;letter-spacing:3px;text-transform:uppercase;line-height:0.92;margin-bottom:16px;}
+.ev-featured-date{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.ev-featured-right{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:10px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;padding:16px 36px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
+.btn-primary:hover{background:rgba(255,255,255,0.88);}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);font-family:'Gotham',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.btn-ghost:hover{border-color:#fff;color:#fff;}
 
-.evento-media{position:relative;overflow:hidden;background:#111;min-height:420px;}
-.evento-media img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
-.evento:hover .evento-media img{transform:scale(1.03);}
+/* EVENTS GRID */
+.events-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:3px;}
 
-/* Photo collage inside media */
-.photo-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:100%;gap:2px;}
-.photo-grid img{width:100%;height:100%;object-fit:cover;display:block;}
-.photo-grid img:first-child{grid-column:span 2;}
+.ev-card{position:relative;overflow:hidden;min-height:520px;cursor:default;}
+.ev-card-img{position:absolute;inset:0;}
+.ev-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease;}
+.ev-card:hover .ev-card-img img{transform:scale(1.05);}
+.ev-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.3) 55%,transparent 100%);}
+.ev-card-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:40px 40px 44px;}
+.ev-card-tag{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:10px;}
+.ev-card-title{font-size:clamp(24px,3.2vw,40px);font-weight:900;letter-spacing:2px;text-transform:uppercase;line-height:1.0;margin-bottom:10px;}
+.ev-card-date{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:24px;}
+.ev-card-desc{font-size:13px;font-weight:500;line-height:1.75;color:rgba(255,255,255,0.6);margin-bottom:28px;max-width:420px;}
+.ev-card-links{display:flex;flex-wrap:wrap;gap:10px;}
+.ev-card-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:'Gotham',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;text-decoration:none;transition:all 0.2s;}
+.ev-card-btn:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,0.06);}
 
-.evento-video{width:100%;height:100%;position:relative;min-height:320px;}
-.evento-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-
-.evento-info{background:#111;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;}
-.ev-badge{font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px;}
-.ev-title{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:3px;text-transform:uppercase;line-height:1.05;margin-bottom:8px;}
-.ev-date{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:24px;}
-.divider{width:48px;height:2px;background:rgba(255,255,255,0.15);margin-bottom:24px;}
-.ev-desc{font-size:15px;font-weight:500;line-height:1.85;color:rgba(255,255,255,0.6);margin-bottom:32px;}
-
-.btn-ev{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.65);font-family:'Gotham',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;text-decoration:none;transition:all 0.2s;align-self:flex-start;}
-.btn-ev:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,0.05);}
-.btn-ev-solid{background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;text-decoration:none;transition:background 0.2s;display:inline-block;margin-bottom:12px;}
-.btn-ev-solid:hover{background:rgba(255,255,255,0.88);}
-
-.btns-row{display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
-
-/* Flyer image */
-.flyer-wrap{margin-top:24px;}
-.flyer-wrap img{width:100%;max-width:360px;border-radius:3px;display:block;}
-
-/* PRONTO banner */
-.pronto-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
-.pronto-overlay p{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
-.pronto-overlay h3{font-size:clamp(22px,3vw,32px);font-weight:900;letter-spacing:3px;text-transform:uppercase;}
+/* VIDEO STRIP */
+.ev-video-strip{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:56px 64px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.ev-video-strip-info .tag{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px;}
+.ev-video-strip-info h3{font-size:clamp(24px,3vw,38px);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.ev-video-strip-info p{font-size:14px;font-weight:500;line-height:1.8;color:rgba(255,255,255,0.55);margin-bottom:28px;}
+.ev-video-strip video{width:100%;border-radius:4px;display:block;background:#000;}
 
 /* FOOTER */
 footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40px;text-align:center;}
@@ -87,10 +90,6 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 .footer-addr{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.8;}
 .footer-copy{margin-top:20px;font-size:11px;color:rgba(255,255,255,0.15);}
 
-.ev-video-native{margin:0 0 28px;}
-.ev-video-native video{width:100%;border-radius:4px;display:block;background:#000;}
-
-
 /* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:0 20px;}
@@ -100,23 +99,13 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   .nav-links.open a{display:block;padding:13px 0;}
   .hamburger{display:flex;}
   .page-hero{padding:0 24px 40px;}
-  .evento,.evento.reverse{grid-template-columns:1fr;direction:ltr;}
-  .evento-media{min-height:280px;}
-  .evento-info{padding:40px 24px;}
+  .ev-featured-content{flex-direction:column;align-items:flex-start;padding:36px 24px;}
+  .ev-featured-right{align-items:flex-start;}
+  .events-grid{grid-template-columns:1fr;}
+  .ev-card{min-height:400px;}
+  .ev-card-content{padding:28px 24px 32px;}
+  .ev-video-strip{grid-template-columns:1fr;padding:40px 24px;gap:32px;}
   footer{padding:40px 20px;}
-}
-
-/* NAV LIBERACION ROJO */
-.nav-red > a {
-  background: #b91c1c;
-  color: #fff !important;
-  padding: 6px 16px !important;
-  border-radius: 3px;
-  letter-spacing: 1.5px;
-}
-.nav-red > a:hover {
-  background: #dc2626 !important;
-  color: #fff !important;
 }
 </style>
 </head>
@@ -161,111 +150,89 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </div>
 
-<!-- ── CONGRESO ELLAS ── -->
-<div class="evento">
-  <div class="evento-media">
-    <div class="photo-grid">
-      <img src="assets/img/ellas2026.jpg" alt="Congreso Ellas 2026">
-      <img src="assets/img/img11.jpg" alt="Ellas">
-      <img src="assets/img/img21.jpg" alt="Ellas">
+<!-- ── CONGRESO ELLAS — FEATURED ── -->
+<section class="ev-featured">
+  <div class="ev-featured-bg">
+    <img src="assets/img/ellas2026.jpg" alt="Congreso Ellas 2026">
+  </div>
+  <div class="ev-featured-content">
+    <div class="ev-featured-left">
+      <div class="ev-tag">Ministerio Ellas GYF</div>
+      <h2 class="ev-featured-title">Congreso<br>Ellas</h2>
+      <p class="ev-featured-date">12 y 13 de Junio · Ciudad Victoria</p>
+    </div>
+    <div class="ev-featured-right">
+      <a href="https://www.eventbrite.com/e/congreso-ellas-2026-tickets-1984826798384" target="_blank" class="btn-primary">Registrarme ↗</a>
+      <a href="https://www.instagram.com/ellas_gyf" target="_blank" class="btn-ghost">@ellas_gyf ↗</a>
     </div>
   </div>
-  <div class="evento-info">
-    <p class="ev-badge">Ministerio Ellas GYF</p>
-    <h2 class="ev-title">Congreso<br>Ellas</h2>
-    <p class="ev-date">12 y 13 de Junio · Ciudad Victoria</p>
-    <div class="divider"></div>
-    <p class="ev-desc">Una reunión especial de 2 días donde compartimos palabra y pasamos un tiempo entre mujeres para ser llenas de Fe y del Espíritu Santo. Un espacio diseñado para renovar, sanar y fortalecer el corazón de cada mujer.</p>
-    <div class="flyer-wrap">
-      <img src="assets/img/ellas2026.jpg" alt="Flyer Congreso Ellas 2026 — Tu historia tiene un final feliz">
+</section>
+
+<!-- ── VIDEO STRIP — CONGRESO HOMBRES ── -->
+<div class="ev-video-strip">
+  <div class="ev-video-strip-info">
+    <p class="tag">Ministerio Legado</p>
+    <h3>Congreso<br>Hombres</h3>
+    <p>Un encuentro donde somos impulsados a tomar el carácter de Cristo para transformar la vida de hombres, generaciones y familias. Un espacio de palabra, comunidad y propósito.</p>
+    <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:24px;">Sábado 6 de Junio · 9:00 AM · Ciudad Victoria</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://www.instagram.com/legadogyf" target="_blank" class="btn-ghost">@legadogyf ↗</a>
+      <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="btn-ghost">Más información →</a>
     </div>
-    <br>
-    <div class="btns-row">
-      <a href="https://www.eventbrite.com/e/congreso-ellas-2026-tickets-1984826798384" target="_blank" class="btn-ev-solid">Registrarme ↗</a>
-      <a href="https://www.instagram.com/ellas_gyf" target="_blank" class="btn-ev">@ellas_gyf ↗</a>
-    </div>
+  </div>
+  <div>
+    <video controls playsinline poster="assets/img/hombres_congreso.jpeg">
+      <source src="assets/video/video_congreso.mp4" type="video/mp4">
+    </video>
   </div>
 </div>
 
-<!-- ── CONGRESO HOMBRES ── -->
-<div class="evento reverse">
-  <div class="evento-media">
-    <div class="photo-grid">
-      <img src="assets/img/hombres_congreso.jpeg" alt="Congreso Hombres Legado — Sábado 6 de Junio">
-      <img src="assets/img/legado5.jpg" alt="Legado">
-      <img src="assets/img/legado6.jpg" alt="Legado">
-    </div>
-  </div>
-  <div class="evento-info" style="background:#161616;">
-    <p class="ev-badge">Ministerio Legado</p>
-    <h2 class="ev-title">Congreso<br>Hombres</h2>
-    <p class="ev-date">Sábado 6 de Junio · 9:00 AM · Ciudad Victoria</p>
-    <div class="divider"></div>
-    <p class="ev-desc">Un encuentro donde somos impulsados a tomar el carácter de Cristo para transformar la vida de hombres, generaciones y familias. Un espacio de palabra, comunidad y propósito.</p>
-    <div class="ev-video-native">
-      <video controls playsinline poster="assets/img/hombres_congreso.jpeg">
-        <source src="assets/video/video_congreso.mp4" type="video/mp4">
-        Tu navegador no soporta reproducción de video.
-      </video>
-    </div>
-    <div class="btns-row">
-      <a href="https://www.instagram.com/legadogyf" target="_blank" class="btn-ev">@legadogyf ↗</a>
-      <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="btn-ev">Más información →</a>
-    </div>
-  </div>
-</div>
+<!-- ── EVENTS GRID: NIÑOS + T412 ── -->
+<div class="events-grid">
 
-<!-- ── CAMPAMENTO NIÑOS ── -->
-<div class="evento">
-  <div class="evento-media">
-    <div class="photo-grid">
+  <!-- CAMPAMENTO NIÑOS -->
+  <div class="ev-card">
+    <div class="ev-card-img">
       <img src="assets/img/ninos10.jpg" alt="Campamento Niños GYF">
-      <img src="assets/img/ninos5.jpg" alt="Niños GYF">
-      <img src="assets/img/ninos9.jpg" alt="Niños GYF">
+    </div>
+    <div class="ev-card-content">
+      <p class="ev-card-tag">Niños GYF · 3 a 11 años</p>
+      <h3 class="ev-card-title">Campamento<br>Niños GYF</h3>
+      <p class="ev-card-date">13 — 16 de Julio · Ciudad Victoria</p>
+      <p class="ev-card-desc">La oportunidad de que niños y niñas tengan sus primeros encuentros con Dios. Días llenos de diversión, amigos y momentos eternos.</p>
+      <div class="ev-card-links">
+        <a href="https://www.instagram.com/kids_gyf" target="_blank" class="ev-card-btn">@kids_gyf ↗</a>
+        <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="ev-card-btn">Más información →</a>
+      </div>
     </div>
   </div>
-  <div class="evento-info">
-    <p class="ev-badge">Niños GYF · 3 a 11 años</p>
-    <h2 class="ev-title">Campamento<br>Niños GYF</h2>
-    <p class="ev-date">13 — 16 de Julio · Ciudad Victoria</p>
-    <div class="divider"></div>
-    <p class="ev-desc">La oportunidad de que niños y niñas tengan sus primeros encuentros con Dios y conozcan el perfecto amor de Jesús a través del Espíritu Santo. Días llenos de diversión, amigos y momentos eternos.</p>
-    <div class="btns-row">
-      <a href="https://www.instagram.com/kids_gyf" target="_blank" class="btn-ev">@kids_gyf ↗</a>
-      <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="btn-ev">Más información →</a>
-    </div>
-  </div>
-</div>
 
-<!-- ── CAMPAMENTO T412 ── -->
-<div class="evento reverse">
-  <div class="evento-media">
-    <div class="photo-grid">
+  <!-- CAMPAMENTO T412 -->
+  <div class="ev-card">
+    <div class="ev-card-img">
       <img src="assets/img/t412_4.jpg" alt="Campamento T412">
-      <img src="assets/img/t412_7.jpg" alt="T412">
-      <img src="assets/img/t412_6.jpg" alt="T412">
+    </div>
+    <div class="ev-card-content">
+      <p class="ev-card-tag">T412 · Secundaria y Preparatoria</p>
+      <h3 class="ev-card-title">Campamento<br>T412</h3>
+      <p class="ev-card-date">Próximamente · Al aire libre</p>
+      <p class="ev-card-desc">Adolescentes viven una experiencia única con actividades, aventura y conferencias llenas de la Palabra de Dios.</p>
+      <div class="ev-card-links">
+        <a href="https://www.instagram.com/t412ad" target="_blank" class="ev-card-btn">@t412ad ↗</a>
+        <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="ev-card-btn">Más información →</a>
+      </div>
     </div>
   </div>
-  <div class="evento-info" style="background:#161616;">
-    <p class="ev-badge">T412 · Secundaria y Preparatoria</p>
-    <h2 class="ev-title">Campamento<br>T412</h2>
-    <p class="ev-date">Próximamente · Al aire libre</p>
-    <div class="divider"></div>
-    <p class="ev-desc">Un evento al aire libre donde adolescentes viven una experiencia única con diferentes actividades y conferencias llenas de la Palabra de Dios. Aventura, comunidad y encuentro con Jesús.</p>
-    <div class="btns-row">
-      <a href="https://www.instagram.com/t412ad" target="_blank" class="btn-ev">@t412ad ↗</a>
-      <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="btn-ev">Más información →</a>
-    </div>
-  </div>
+
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-socials">
     <a href="https://www.facebook.com/graciayfeiglesia" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-    <a href="https://www.instagram.com/graciayfeiglesia/" target="_blank" class="soc-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg></a>
+    <a href="https://www.instagram.com/graciayfeiglesia/" target="_blank" class="soc-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
     <a href="https://www.youtube.com/channel/UCwLsinCgFSqcqne2tASgx5g" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.47A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a"/></svg></a>
-    <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+    <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="soc-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.558 4.112 1.528 5.836L.057 23.5l5.83-1.449A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.368l-.36-.214-3.716.924.991-3.624-.235-.372A9.818 9.818 0 1 1 12 21.818z"/></svg></a>
   </div>
   <p class="footer-name">Gracia y Fe Iglesia</p>
   <div class="footer-addr">

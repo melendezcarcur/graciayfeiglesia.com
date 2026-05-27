@@ -60,17 +60,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .btn-main{display:inline-block;background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:11px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;padding:15px 40px;text-decoration:none;transition:background 0.2s;}
 .btn-main:hover{background:rgba(255,255,255,0.88);}
 
-/* PRIMER PASO */
-.primer-paso{background:url('assets/img/img7.jpg') center/cover no-repeat;position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center;}
-.primer-paso::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.78);}
-.paso-content{position:relative;z-index:2;padding:60px 40px;max-width:600px;}
-.paso-num{font-size:120px;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;position:absolute;top:40px;left:50%;transform:translateX(-50%);white-space:nowrap;}
-.paso-badge{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px;}
-.paso-title{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:4px;text-transform:uppercase;line-height:1;margin-bottom:24px;}
-.paso-desc{font-size:15px;font-weight:500;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:36px;}
-.btn-paso{display:inline-block;background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:11px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;padding:16px 48px;text-decoration:none;transition:background 0.2s;margin-bottom:14px;}
-.btn-paso:hover{background:rgba(255,255,255,0.88);}
-.btn-wa{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;}
+
 .btn-wa:hover{color:#fff;}
 
 /* FOOTER */
@@ -83,6 +73,116 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 .footer-addr{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.8;}
 .footer-copy{margin-top:20px;font-size:11px;color:rgba(255,255,255,0.15);}
 
+
+/* SERVIR HERO — cinematic fullscreen */
+.servir-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.servir-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.servir-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 8s ease;
+}
+.servir-hero:hover .servir-hero-bg img { transform: scale(1.04); }
+.servir-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(0,0,0,0.0) 0%,
+    rgba(0,0,0,0.15) 35%,
+    rgba(13,13,13,0.92) 62%,
+    rgba(13,13,13,1) 100%
+  );
+}
+.servir-hero-content {
+  position: relative;
+  z-index: 2;
+  margin-left: auto;
+  width: 52%;
+  padding: 80px 72px 80px 48px;
+}
+.servir-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+}
+.servir-title {
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  line-height: 0.92;
+  margin-bottom: 24px;
+}
+.servir-divider {
+  width: 48px;
+  height: 2px;
+  background: rgba(255,255,255,0.2);
+  margin-bottom: 28px;
+}
+.servir-desc {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+.servir-areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 32px;
+  margin-bottom: 40px;
+}
+.servir-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.5px;
+}
+.servir-area::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.servir-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  color: #0d0d0d;
+  font-family: 'Gotham', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 18px 44px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.servir-btn:hover { background: rgba(255,255,255,0.88); }
 @media(max-width:800px){
   nav{padding:0 20px;}
   .nav-links{display:none;}
@@ -93,6 +193,10 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   .page-hero{text-align:left;align-items:flex-end;padding:0 24px 48px;}
   .hero-sub{margin:0;}
   .content{padding:52px 20px;}
+
+  .servir-hero { min-height: 100vw; }
+  .servir-hero-content { width: 100%; padding: 40px 24px; background: rgba(13,13,13,0.88); }
+  .servir-areas { grid-template-columns: 1fr; }
   .servir-block{grid-template-columns:1fr;}
   .servir-img{min-height:260px;}
   .servir-info{padding:36px 24px;}
@@ -157,49 +261,29 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </div>
 
-<!-- SERVIR -->
-<div class="content">
-  <div class="servir-block">
-    <div class="servir-img">
-      <img src="assets/img/servidores.jpg" alt="Servidores GYF">
-    </div>
-    <div class="servir-info">
-      <p class="badge">Voluntariado</p>
-      <h2 class="block-title">Servir</h2>
-      <div class="divider"></div>
-      <p class="block-desc">Usa tus talentos y habilidades para servir a Dios y a las personas. En Gracia y Fe hay un lugar para ti en diferentes áreas de servicio.</p>
-      <div class="areas">
-        <div class="area-item"><div class="area-dot"></div>Producción y audio</div>
-        <div class="area-item"><div class="area-dot"></div>Recepción y bienvenida</div>
-        <div class="area-item"><div class="area-dot"></div>Niños GYF</div>
-        <div class="area-item"><div class="area-dot"></div>Alabanza y adoración</div>
-        <div class="area-item"><div class="area-dot"></div>Diseño y comunicación</div>
-        <div class="area-item"><div class="area-dot"></div>Comunidad GYF</div>
-      </div>
-      <a href="https://forms.office.com/r/06fsU5ZsWW" target="_blank" class="btn-main">
-        Quiero servir ↗
-      </a>
-    </div>
+<!-- SERVIR HERO -->
+<section class="servir-hero">
+  <div class="servir-hero-bg">
+    <img src="assets/img/servidores.jpg" alt="Servidores GYF">
   </div>
-</div>
-
-<!-- TU PRIMER PASO -->
-<div class="primer-paso">
-  <span class="paso-num">01</span>
-  <div class="paso-content">
-    <p class="paso-badge">Comienza aquí</p>
-    <h2 class="paso-title">Tu primer<br>paso</h2>
-    <p class="paso-desc">¿Listo para ser parte de la familia? Completa el formulario y uno de nuestros líderes se pondrá en contacto contigo para orientarte y darte la bienvenida.</p>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-      <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="btn-paso">
-        Llenar formulario ↗
-      </a>
-      <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="btn-wa">
-        O escríbenos por WhatsApp →
-      </a>
+  <div class="servir-hero-content">
+    <p class="servir-eyebrow">Voluntariado</p>
+    <h2 class="servir-title">Servir</h2>
+    <div class="servir-divider"></div>
+    <p class="servir-desc">Usa tus talentos y habilidades para servir a Dios y a las personas. En Gracia y Fe hay un lugar para ti.</p>
+    <div class="servir-areas">
+      <div class="servir-area">Producción y audio</div>
+      <div class="servir-area">Recepción y bienvenida</div>
+      <div class="servir-area">Niños GYF</div>
+      <div class="servir-area">Alabanza y adoración</div>
+      <div class="servir-area">Diseño y comunicación</div>
+      <div class="servir-area">Comunidad GYF</div>
     </div>
+    <a href="https://forms.office.com/r/06fsU5ZsWW" target="_blank" class="servir-btn">
+      Quiero servir ↗
+    </a>
   </div>
-</div>
+</section>
 
 <footer>
   <div class="footer-socials">

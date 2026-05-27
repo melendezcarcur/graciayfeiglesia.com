@@ -12,6 +12,7 @@
 :root{--nav-h:68px;}
 body{font-family:'Gotham','Montserrat',sans-serif;background:#0d0d0d;color:#fff;overflow-x:hidden;}
 
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;padding:0 40px;background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);}
 .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff;flex-shrink:0;margin-right:44px;}
 .logo-img{height:38px;width:auto;display:block;}
@@ -27,41 +28,162 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .dropdown a:hover{color:#fff;background:rgba(255,255,255,0.05);}
 .hamburger{display:none;background:none;border:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;}
 .hamburger span{display:block;width:22px;height:1.5px;background:#fff;}
+.nav-red > a{background:#b91c1c;color:#fff !important;padding:6px 16px !important;border-radius:3px;letter-spacing:1.5px;}
+.nav-red > a:hover{background:#dc2626 !important;color:#fff !important;}
 
-/* HERO */
-.page-hero{height:55vh;min-height:360px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:var(--nav-h);}
-.hero-bg{position:absolute;inset:0;background:url('assets/img/servidores.jpg') center/cover no-repeat;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.4) 0%,rgba(13,13,13,0.85) 100%);}
-.hero-content{position:relative;z-index:2;padding:0 24px;}
-.eyebrow{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;}
-.hero-title{font-size:clamp(40px,7vw,84px);font-weight:900;letter-spacing:4px;text-transform:uppercase;line-height:0.95;margin-bottom:20px;}
-.hero-sub{font-size:16px;font-weight:500;color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto;line-height:1.75;}
+/* ── HERO FULLSCREEN ── */
+.hero{
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin-top: var(--nav-h);
+}
+.hero-bg{
+  position: absolute;
+  inset: 0;
+}
+.hero-bg img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.hero-bg::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.90) 0%,
+    rgba(0,0,0,0.45) 45%,
+    rgba(0,0,0,0.1) 100%
+  );
+}
+.hero-body{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 72px 72px;
+  gap: 40px;
+}
+.hero-left{}
+.hero-eyebrow{
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin-bottom: 16px;
+}
+.hero-title{
+  font-size: clamp(52px, 9vw, 110px);
+  font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; line-height: 0.88;
+  margin-bottom: 24px;
+}
+.hero-sub{
+  font-size: 17px; font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7; max-width: 420px;
+}
+.hero-right{
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  padding-bottom: 6px;
+}
+.btn-white{
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; color: #0d0d0d;
+  font-family: 'Gotham', sans-serif;
+  font-size: 11px; font-weight: 900;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 17px 40px; text-decoration: none;
+  transition: background 0.2s; white-space: nowrap;
+}
+.btn-white:hover{background: rgba(255,255,255,0.88);}
+.btn-outline{
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.65);
+  font-family: 'Gotham', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 28px; text-decoration: none;
+  transition: all 0.2s; white-space: nowrap;
+}
+.btn-outline:hover{border-color:#fff; color:#fff;}
 
-/* CONTENT */
-.content{max-width:900px;margin:0 auto;padding:80px 40px;}
+/* ── AREAS STRIP ── */
+.areas-strip{
+  background: #111;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 56px 72px;
+}
+.areas-strip-label{
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 36px;
+}
+.areas-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.area-card{
+  background: #161616;
+  padding: 36px 32px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: background 0.2s;
+}
+.area-card:hover{background: #1e1e1e;}
+.area-num{
+  font-size: 28px; font-weight: 900;
+  color: rgba(255,255,255,0.07);
+  flex-shrink: 0; min-width: 36px;
+  line-height: 1;
+}
+.area-name{
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
 
-/* SERVIR */
-.servir-block{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#111;margin-bottom:4px;overflow:hidden;}
-.servir-img{position:relative;overflow:hidden;min-height:400px;}
-.servir-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
-.servir-block:hover .servir-img img{transform:scale(1.04);}
-.servir-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,#111);}
-.servir-info{padding:56px 48px;display:flex;flex-direction:column;justify-content:center;}
-.badge{font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px;}
-.block-title{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:3px;text-transform:uppercase;line-height:1.05;margin-bottom:8px;}
-.divider{width:48px;height:2px;background:rgba(255,255,255,0.15);margin:20px 0;}
-.block-desc{font-size:15px;font-weight:500;line-height:1.85;color:rgba(255,255,255,0.55);margin-bottom:12px;}
-
-/* Areas de servicio */
-.areas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0 28px;}
-.area-item{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,0.5);font-weight:500;}
-.area-dot{width:5px;height:5px;background:rgba(255,255,255,0.3);border-radius:50%;flex-shrink:0;}
-
-.btn-main{display:inline-block;background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:11px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;padding:15px 40px;text-decoration:none;transition:background 0.2s;}
-.btn-main:hover{background:rgba(255,255,255,0.88);}
-
-
-.btn-wa:hover{color:#fff;}
+/* ── CTA SECTION ── */
+.cta-section{
+  padding: 96px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cta-left{}
+.cta-label{
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 20px;
+}
+.cta-title{
+  font-size: clamp(32px, 4.5vw, 60px);
+  font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; line-height: 1;
+  margin-bottom: 20px;
+}
+.cta-desc{
+  font-size: 15px; font-weight: 500;
+  line-height: 1.8; color: rgba(255,255,255,0.5);
+  max-width: 480px;
+}
+.cta-right{flex-shrink: 0;}
 
 /* FOOTER */
 footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40px;text-align:center;}
@@ -73,149 +195,23 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 .footer-addr{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.8;}
 .footer-copy{margin-top:20px;font-size:11px;color:rgba(255,255,255,0.15);}
 
-
-/* SERVIR HERO — cinematic fullscreen */
-.servir-hero {
-  position: relative;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-.servir-hero-bg {
-  position: absolute;
-  inset: 0;
-}
-.servir-hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 8s ease;
-}
-.servir-hero:hover .servir-hero-bg img { transform: scale(1.04); }
-.servir-hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    rgba(0,0,0,0.0) 0%,
-    rgba(0,0,0,0.15) 35%,
-    rgba(13,13,13,0.92) 62%,
-    rgba(13,13,13,1) 100%
-  );
-}
-.servir-hero-content {
-  position: relative;
-  z-index: 2;
-  margin-left: auto;
-  width: 52%;
-  padding: 80px 72px 80px 48px;
-}
-.servir-eyebrow {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 16px;
-}
-.servir-title {
-  font-size: clamp(52px, 7vw, 96px);
-  font-weight: 900;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  line-height: 0.92;
-  margin-bottom: 24px;
-}
-.servir-divider {
-  width: 48px;
-  height: 2px;
-  background: rgba(255,255,255,0.2);
-  margin-bottom: 28px;
-}
-.servir-desc {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 36px;
-  max-width: 440px;
-}
-.servir-areas {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 32px;
-  margin-bottom: 40px;
-}
-.servir-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.55);
-  letter-spacing: 0.5px;
-}
-.servir-area::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  background: rgba(255,255,255,0.4);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.servir-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #fff;
-  color: #0d0d0d;
-  font-family: 'Gotham', sans-serif;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  padding: 18px 44px;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.servir-btn:hover { background: rgba(255,255,255,0.88); }
-@media(max-width:800px){
+/* RESPONSIVE */
+@media(max-width:900px){
   nav{padding:0 20px;}
   .nav-links{display:none;}
   .nav-links.open{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(10,10,10,0.98);padding:12px 20px 24px;gap:0;border-bottom:1px solid rgba(255,255,255,0.07);z-index:99;}
   .nav-links.open li{border-bottom:1px solid rgba(255,255,255,0.05);}
   .nav-links.open a{display:block;padding:13px 0;}
   .hamburger{display:flex;}
-  .page-hero{text-align:left;align-items:flex-end;padding:0 24px 48px;}
-  .hero-sub{margin:0;}
-  .content{padding:52px 20px;}
-
-  .servir-hero { min-height: 100vw; }
-  .servir-hero-content { width: 100%; padding: 40px 24px; background: rgba(13,13,13,0.88); }
-  .servir-areas { grid-template-columns: 1fr; }
-  .servir-block{grid-template-columns:1fr;}
-  .servir-img{min-height:260px;}
-  .servir-info{padding:36px 24px;}
-  .areas{grid-template-columns:1fr;}
-  .paso-content{padding:48px 20px;}
+  .hero-body{flex-direction:column;align-items:flex-start;padding:0 24px 48px;gap:28px;}
+  .hero-right{align-items:flex-start;}
+  .areas-strip{padding:40px 24px;}
+  .areas-grid{grid-template-columns:1fr 1fr;}
+  .cta-section{flex-direction:column;align-items:flex-start;padding:60px 24px;gap:32px;}
   footer{padding:40px 20px;}
 }
-
-/* NAV LIBERACION ROJO */
-.nav-red > a {
-  background: #b91c1c;
-  color: #fff !important;
-  padding: 6px 16px !important;
-  border-radius: 3px;
-  letter-spacing: 1.5px;
-}
-.nav-red > a:hover {
-  background: #dc2626 !important;
-  color: #fff !important;
+@media(max-width:560px){
+  .areas-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -251,46 +247,56 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO -->
-<div class="page-hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <p class="eyebrow">Gracia y Fe Iglesia</p>
-    <h1 class="hero-title">Involúcrate</h1>
-    <p class="hero-sub">Hay un lugar para ti. Usa tus dones para servir y ser parte de algo más grande.</p>
-  </div>
-</div>
-
-<!-- SERVIR HERO -->
-<section class="servir-hero">
-  <div class="servir-hero-bg">
+<!-- HERO FULLSCREEN -->
+<section class="hero">
+  <div class="hero-bg">
     <img src="assets/img/servidores2.jpg" alt="Servidores GYF">
   </div>
-  <div class="servir-hero-content">
-    <p class="servir-eyebrow">Voluntariado</p>
-    <h2 class="servir-title">Servir</h2>
-    <div class="servir-divider"></div>
-    <p class="servir-desc">Usa tus talentos y habilidades para servir a Dios y a las personas. En Gracia y Fe hay un lugar para ti.</p>
-    <div class="servir-areas">
-      <div class="servir-area">Producción y audio</div>
-      <div class="servir-area">Recepción y bienvenida</div>
-      <div class="servir-area">Niños GYF</div>
-      <div class="servir-area">Alabanza y adoración</div>
-      <div class="servir-area">Diseño y comunicación</div>
-      <div class="servir-area">Comunidad GYF</div>
+  <div class="hero-body">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Gracia y Fe Iglesia</p>
+      <h1 class="hero-title">Involú<br>crate</h1>
+      <p class="hero-sub">Hay un lugar para ti. Usa tus dones para servir y ser parte de algo más grande.</p>
     </div>
-    <a href="https://forms.office.com/r/06fsU5ZsWW" target="_blank" class="servir-btn">
-      Quiero servir ↗
-    </a>
+    <div class="hero-right">
+      <a href="https://forms.office.com/r/06fsU5ZsWW" target="_blank" class="btn-white">Quiero servir ↗</a>
+      <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="btn-outline">Escríbenos →</a>
+    </div>
   </div>
 </section>
 
+<!-- AREAS STRIP -->
+<div class="areas-strip">
+  <p class="areas-strip-label">Áreas de servicio</p>
+  <div class="areas-grid">
+    <div class="area-card"><span class="area-num">01</span><span class="area-name">Producción y audio</span></div>
+    <div class="area-card"><span class="area-num">02</span><span class="area-name">Recepción y bienvenida</span></div>
+    <div class="area-card"><span class="area-num">03</span><span class="area-name">Niños GYF</span></div>
+    <div class="area-card"><span class="area-num">04</span><span class="area-name">Alabanza y adoración</span></div>
+    <div class="area-card"><span class="area-num">05</span><span class="area-name">Diseño y comunicación</span></div>
+    <div class="area-card"><span class="area-num">06</span><span class="area-name">Comunidad GYF</span></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-left">
+    <p class="cta-label">Da el primer paso</p>
+    <h2 class="cta-title">¿Listo para<br>servir?</h2>
+    <p class="cta-desc">Completa el formulario y uno de nuestros líderes se pondrá en contacto contigo para orientarte y darte la bienvenida a tu área de servicio.</p>
+  </div>
+  <div class="cta-right">
+    <a href="https://forms.office.com/r/06fsU5ZsWW" target="_blank" class="btn-white">Llenar formulario ↗</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-socials">
     <a href="https://www.facebook.com/graciayfeiglesia" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-    <a href="https://www.instagram.com/graciayfeiglesia/" target="_blank" class="soc-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2.5"/></svg></a>
+    <a href="https://www.instagram.com/graciayfeiglesia/" target="_blank" class="soc-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
     <a href="https://www.youtube.com/channel/UCwLsinCgFSqcqne2tASgx5g" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.47A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a"/></svg></a>
-    <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="soc-link"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+    <a href="https://wa.me/message/S4AIA3QVYCMQF1" target="_blank" class="soc-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.558 4.112 1.528 5.836L.057 23.5l5.83-1.449A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.368l-.36-.214-3.716.924.991-3.624-.235-.372A9.818 9.818 0 1 1 12 21.818z"/></svg></a>
   </div>
   <p class="footer-name">Gracia y Fe Iglesia</p>
   <div class="footer-addr">

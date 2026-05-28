@@ -43,31 +43,31 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .main{max-width:1040px;margin:0 auto;padding:80px 40px;}
 
 /* PAGO CON TARJETA */
-.card-section{margin-bottom:4px;}
+
 .section-header{margin-bottom:40px;}
 .section-label{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:12px;}
 .section-title{font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:3px;text-transform:uppercase;}
 
 /* Monto buttons */
-.monto-wrap{background:#111;padding:48px;margin-bottom:4px;}
-.monto-label{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:20px;}
-.montos{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
-.monto-btn{background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);font-family:'Gotham',sans-serif;font-size:14px;font-weight:700;padding:14px 24px;cursor:pointer;transition:all 0.2s;border-radius:2px;}
-.monto-btn:hover,.monto-btn.active{background:#fff;color:#0d0d0d;border-color:#fff;}
-.monto-custom-wrap{display:flex;align-items:center;gap:0;max-width:300px;}
-.monto-prefix{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;padding:14px 16px;font-size:14px;font-weight:700;color:rgba(255,255,255,0.5);}
-.monto-custom{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;font-family:'Gotham',sans-serif;font-size:14px;font-weight:700;padding:14px 16px;width:100%;outline:none;transition:border-color 0.2s;}
-.monto-custom:focus{border-color:rgba(255,255,255,0.5);}
-.monto-custom::placeholder{color:rgba(255,255,255,0.2);}
+
+
+
+
+
+
+
+
+
+
 
 /* Frecuencia */
-.frecuencia-wrap{background:#111;padding:48px;margin-bottom:4px;}
-.freq-btns{display:flex;gap:3px;margin-top:20px;}
-.freq-btn{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);font-family:'Gotham',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px;cursor:pointer;transition:all 0.2s;text-align:center;}
-.freq-btn:hover,.freq-btn.active{background:#fff;color:#0d0d0d;border-color:#fff;}
+
+
+
+
 
 /* Stripe CTA */
-.stripe-cta{background:#111;padding:48px;text-align:center;}
+
 .stripe-cta p{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:28px;line-height:1.6;}
 .btn-donar{display:inline-block;background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:12px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;padding:18px 56px;text-decoration:none;transition:background 0.2s;cursor:pointer;border:none;width:100%;max-width:400px;}
 .btn-donar:hover{background:rgba(255,255,255,0.88);}
@@ -115,9 +115,9 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   .nav-links.open a{display:block;padding:13px 0;}
   .hamburger{display:flex;}
   .main{padding:52px 20px;}
-  .monto-wrap,.frecuencia-wrap,.stripe-cta,.forma-card,.gracias-banner{padding:32px 20px;}
+  
   .formas-grid{grid-template-columns:1fr;}
-  .freq-btns{flex-direction:column;}
+  
   footer{padding:40px 20px;}
 }
 
@@ -172,45 +172,15 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 
 <div class="main">
 
-  <!-- PAGO CON TARJETA -->
-  <div class="section-header">
-    <p class="section-label">En línea</p>
-    <h2 class="section-title">Dona con tarjeta</h2>
-  </div>
-
-  <!-- MONTO -->
-  <div class="monto-wrap">
-    <p class="monto-label">Selecciona un monto</p>
-    <div class="montos">
-      <button class="monto-btn" onclick="setMonto(this,'100')">$100</button>
-      <button class="monto-btn active" onclick="setMonto(this,'200')">$200</button>
-      <button class="monto-btn" onclick="setMonto(this,'500')">$500</button>
-      <button class="monto-btn" onclick="setMonto(this,'1000')">$1,000</button>
-      <button class="monto-btn" onclick="setMonto(this,'2000')">$2,000</button>
-    </div>
-    <div class="monto-custom-wrap">
-      <span class="monto-prefix">$</span>
-      <input type="number" class="monto-custom" id="monto-custom" placeholder="Otro monto" min="50" oninput="clearActive()">
-    </div>
-  </div>
-
-  <!-- FRECUENCIA -->
-  <div class="frecuencia-wrap">
-    <p class="monto-label">Frecuencia</p>
-    <div class="freq-btns">
-      <button class="freq-btn active" onclick="setFreq(this,'once')">Pago único</button>
-      <button class="freq-btn" onclick="setFreq(this,'monthly')">Mensual</button>
-      <button class="freq-btn" onclick="setFreq(this,'weekly')">Semanal</button>
-    </div>
-  </div>
-
-  <!-- CTA STRIPE -->
-  <div class="stripe-cta">
-    <p>Tu pago es procesado de forma segura. Recibirás un comprobante por correo electrónico.</p>
-    <button class="btn-donar" onclick="procesarDonativo()">
+  <!-- DONA EN LÍNEA -->
+  <div style="background:#111;padding:56px 48px;margin-bottom:4px;text-align:center;">
+    <p style="font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:16px;">En línea</p>
+    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;">Dona con tarjeta</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:480px;margin:0 auto 36px;">Tu pago es procesado de forma segura a través de Stripe. Recibirás un comprobante por correo electrónico.</p>
+    <a href="https://donate.stripe.com/aFacN6fpB3M44ke7HOgIo03" target="_blank" class="btn-donar">
       Donar ahora →
-    </button>
-    <div class="secure-note">
+    </a>
+    <div class="secure-note" style="margin-top:16px;">
       <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       Pago seguro con Stripe · SSL encriptado
     </div>
@@ -276,38 +246,6 @@ const ham = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 ham.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-// Monto selection
-let montoActivo = '200';
-let freqActiva = 'once';
-
-function setMonto(btn, val) {
-  document.querySelectorAll('.monto-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  montoActivo = val;
-  document.getElementById('monto-custom').value = '';
-}
-
-function clearActive() {
-  document.querySelectorAll('.monto-btn').forEach(b => b.classList.remove('active'));
-  montoActivo = null;
-}
-
-function setFreq(btn, val) {
-  document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  freqActiva = val;
-}
-
-
-function procesarDonativo() {
-  window.open('https://donate.stripe.com/aFacN6fpB3M44ke7HOgIo03', '_blank');
-}
-  // Stripe donate link — prefilled_amount is in centavos (MXN × 100)
-  const centavos = Math.round(Number(monto) * 100);
-  const stripeBase = 'https://donate.stripe.com/aFacN6fpB3M44ke7HOgIo03';
-  window.open(`${stripeBase}?prefilled_amount=${centavos}`, '_blank');
-}
 
 // Copiar CLABE
 function copiarCLABE() {

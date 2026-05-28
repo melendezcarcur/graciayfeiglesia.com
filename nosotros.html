@@ -102,6 +102,33 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
   .vm-grid{grid-template-columns:1fr;}
   .vm-card{padding:36px 24px;}
   footer{padding:40px 20px;}
+
+  /* PASTORES MOBILE */
+  .pastores-grid{
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+  .pastores-img{
+    position: relative;
+    min-height: 360px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .pastores-img img{
+    object-position: center 15%;
+  }
+  .pastores-img::after{
+    background: linear-gradient(to bottom, transparent 50%, rgba(13,13,13,0.95) 100%);
+  }
+  .pastores-info{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-left: 0;
+    padding: 32px 24px 40px;
+    background: #111;
+  }
 }
 
 .nav-item{position:relative;}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursos de Liderazgo — Gracia y Fe Iglesia</title>
+<style>
+@font-face{font-family:'Gotham';src:url('assets/fonts/GothamMedium.ttf') format('truetype');font-weight:500;}
+@font-face{font-family:'Gotham';src:url('assets/fonts/GothamBold.ttf') format('truetype');font-weight:700;}
+@font-face{font-family:'Gotham';src:url('assets/fonts/Gotham_Black_Regular.ttf') format('truetype');font-weight:900;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Gotham','Montserrat',sans-serif;background:#0d0d0d;color:#fff;min-height:100vh;}
+
+/* ── LOGIN SCREEN ── */
+#login-screen{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:#0d0d0d;
+}
+.login-box{width:100%;max-width:380px;text-align:center;}
+.login-logo{width:56px;height:56px;border:1.5px solid rgba(255,255,255,0.3);border-radius:50%;margin:0 auto 28px;display:flex;align-items:center;justify-content:center;}
+.login-logo::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%;}
+.login-eyebrow{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;}
+.login-title{font-size:28px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:36px;}
+.login-field{margin-bottom:16px;text-align:left;}
+.login-field label{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+.login-field input{width:100%;background:#161616;border:1px solid rgba(255,255,255,0.12);color:#fff;font-family:'Gotham',sans-serif;font-size:14px;padding:14px 16px;outline:none;transition:border-color 0.2s;}
+.login-field input:focus{border-color:rgba(255,255,255,0.4);}
+.login-btn{width:100%;background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:11px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;padding:16px;border:none;cursor:pointer;margin-top:8px;transition:background 0.2s;}
+.login-btn:hover{background:rgba(255,255,255,0.88);}
+.login-error{color:#f87171;font-size:12px;margin-top:14px;display:none;}
+.login-note{margin-top:32px;font-size:11px;color:rgba(255,255,255,0.25);line-height:1.6;}
+
+/* ── APP SHELL ── */
+#app{display:none;min-height:100vh;}
+.app-nav{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid rgba(255,255,255,0.07);background:#0a0a0a;}
+.app-brand{font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.app-user{display:flex;align-items:center;gap:16px;}
+.app-user span{font-size:11px;color:rgba(255,255,255,0.4);}
+.logout-btn{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);background:none;border:1px solid rgba(255,255,255,0.15);padding:8px 16px;cursor:pointer;transition:all 0.2s;}
+.logout-btn:hover{color:#fff;border-color:#fff;}
+
+.view{display:none;max-width:900px;margin:0 auto;padding:56px 32px;}
+.view.active{display:block;}
+
+.breadcrumb{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px;cursor:pointer;}
+.breadcrumb span{cursor:pointer;transition:color 0.2s;}
+.breadcrumb span:hover{color:#fff;}
+
+.view-eyebrow{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px;}
+.view-title{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:40px;}
+
+/* Series list */
+.series-list{display:flex;flex-direction:column;gap:3px;}
+.series-card{background:#111;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background 0.2s;}
+.series-card:hover{background:#1a1a1a;}
+.series-name{font-size:16px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.series-count{font-size:11px;color:rgba(255,255,255,0.35);}
+.series-arrow{color:rgba(255,255,255,0.4);font-size:18px;}
+
+/* Lessons list */
+.lesson-row{background:#111;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background 0.2s;margin-bottom:3px;}
+.lesson-row:hover{background:#1a1a1a;}
+.lesson-num{font-size:11px;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.lesson-title{font-size:15px;font-weight:700;}
+.lesson-locked{color:rgba(255,255,255,0.25);font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+
+/* Lesson detail */
+.lesson-detail-title{font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;line-height:1.1;}
+.lesson-intro{font-size:15px;font-weight:500;line-height:1.8;color:rgba(255,255,255,0.6);max-width:600px;margin-bottom:36px;}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:4px;margin-bottom:32px;background:#000;}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.lesson-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-pdf{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0d0d0d;font-family:'Gotham',sans-serif;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;text-decoration:none;transition:background 0.2s;}
+.btn-pdf:hover{background:rgba(255,255,255,0.88);}
+.btn-pdf svg{width:16px;height:16px;}
+
+/* Empty state */
+.empty-soon{background:#111;padding:48px 32px;text-align:center;color:rgba(255,255,255,0.35);font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOGIN ═══════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo"></div>
+    <p class="login-eyebrow">Gracia y Fe Iglesia</p>
+    <h1 class="login-title">Recursos de<br>Liderazgo</h1>
+    <form id="login-form">
+      <div class="login-field">
+        <label>Usuario</label>
+        <input type="text" id="login-user" autocomplete="username" required>
+      </div>
+      <div class="login-field">
+        <label>Contraseña</label>
+        <input type="password" id="login-pass" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="login-btn">Iniciar sesión →</button>
+      <p class="login-error" id="login-error">Usuario o contraseña incorrectos.</p>
+    </form>
+    <p class="login-note">Acceso exclusivo para líderes de grupos de conexión.<br>Demo de prueba — usuario: <strong>legado</strong> / contraseña: <strong>legado2026</strong></p>
+  </div>
+</div>
+
+<!-- ═══════ APP ═══════ -->
+<div id="app">
+  <nav class="app-nav">
+    <span class="app-brand">Gracia y Fe · Recursos</span>
+    <div class="app-user">
+      <span id="user-label">Legado GYF</span>
+      <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <!-- VIEW: SERIES LIST -->
+  <div class="view active" id="view-series">
+    <p class="view-eyebrow">Ministerio Legado</p>
+    <h1 class="view-title">Hombres GYF</h1>
+    <div class="series-list" id="series-list"></div>
+  </div>
+
+  <!-- VIEW: LESSONS LIST -->
+  <div class="view" id="view-lessons">
+    <p class="breadcrumb"><span onclick="showView('series')">← Volver a Series</span></p>
+    <p class="view-eyebrow" id="lessons-eyebrow">Serie</p>
+    <h1 class="view-title" id="lessons-title">Serie</h1>
+    <div id="lessons-list"></div>
+  </div>
+
+  <!-- VIEW: LESSON DETAIL -->
+  <div class="view" id="view-lesson-detail">
+    <p class="breadcrumb"><span onclick="showView('lessons')">← Volver a la Serie</span></p>
+    <h1 class="lesson-detail-title" id="ld-title"></h1>
+    <p class="lesson-intro" id="ld-intro"></p>
+    <div class="video-wrap">
+      <iframe id="ld-video" src="" title="Video de la lección" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="lesson-actions">
+      <a href="#" id="ld-pdf" target="_blank" class="btn-pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg>
+        Descargar PDF
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── DATA (DEMO) ── */
+const DATA = {
+  legado: {
+    nombre: 'Legado GYF',
+    series: [
+      {
+        id: 'serie1',
+        nombre: 'Serie 1 — Paternidad',
+        lecciones: [
+          {
+            titulo: 'Lección 1: Los hijos son una bendición',
+            intro: 'En esta primera lección exploramos cómo la Biblia describe a los hijos como un regalo y una recompensa de Dios, y cómo este entendimiento transforma nuestra forma de ejercer la paternidad.',
+            youtube: 'Kbyabp8zV-0',
+            pdf: 'leccion1-paternidad.pdf'
+          },
+          { titulo: 'Lección 2', proximamente: true },
+          { titulo: 'Lección 3', proximamente: true },
+        ]
+      },
+      { id: 'serie2', nombre: 'Serie 2 — Fruto del Espíritu', lecciones: [] },
+      { id: 'serie3', nombre: 'Serie 3 — Liderazgo', lecciones: [] },
+      { id: 'serie4', nombre: 'Serie 4 — Líderes', lecciones: [] },
+    ]
+  }
+};
+
+/* ── DEMO AUTH (cliente — solo para prueba, no es seguro) ── */
+const USERS = {
+  'legado': { pass: 'legado2026', ministerio: 'legado', nombre: 'Legado GYF' }
+};
+
+let currentMinisterio = null;
+let currentSerie = null;
+
+document.getElementById('login-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const u = document.getElementById('login-user').value.trim().toLowerCase();
+  const p = document.getElementById('login-pass').value;
+  const user = USERS[u];
+  if (user && user.pass === p) {
+    currentMinisterio = user.ministerio;
+    document.getElementById('user-label').textContent = user.nombre;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    renderSeries();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+});
+
+function logout() {
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').style.display = 'none';
+  showView('series');
+}
+
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+}
+
+function renderSeries() {
+  const m = DATA[currentMinisterio];
+  const list = document.getElementById('series-list');
+  list.innerHTML = '';
+  m.series.forEach(serie => {
+    const count = serie.lecciones.length;
+    const div = document.createElement('div');
+    div.className = 'series-card';
+    div.onclick = () => openSerie(serie.id);
+    div.innerHTML = `
+      <span class="series-name">${serie.nombre}</span>
+      <span class="series-count">${count > 0 ? count + ' lecciones' : 'Próximamente'} <span class="series-arrow">→</span></span>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function openSerie(serieId) {
+  const m = DATA[currentMinisterio];
+  const serie = m.series.find(s => s.id === serieId);
+  currentSerie = serie;
+  document.getElementById('lessons-eyebrow').textContent = m.nombre;
+  document.getElementById('lessons-title').textContent = serie.nombre;
+
+  const list = document.getElementById('lessons-list');
+  list.innerHTML = '';
+
+  if (serie.lecciones.length === 0) {
+    list.innerHTML = '<div class="empty-soon">Las lecciones de esta serie estarán disponibles próximamente.</div>';
+  } else {
+    serie.lecciones.forEach((lec, idx) => {
+      const row = document.createElement('div');
+      row.className = 'lesson-row';
+      if (lec.proximamente) {
+        row.innerHTML = `
+          <div>
+            <p class="lesson-num">Lección ${idx + 1}</p>
+            <p class="lesson-title">${lec.titulo}</p>
+          </div>
+          <span class="lesson-locked">Próximamente</span>
+        `;
+      } else {
+        row.onclick = () => openLesson(lec);
+        row.innerHTML = `
+          <div>
+            <p class="lesson-num">Lección ${idx + 1}</p>
+            <p class="lesson-title">${lec.titulo}</p>
+          </div>
+          <span class="series-arrow">→</span>
+        `;
+      }
+      list.appendChild(row);
+    });
+  }
+  showView('lessons');
+}
+
+function openLesson(lec) {
+  document.getElementById('ld-title').textContent = lec.titulo;
+  document.getElementById('ld-intro').textContent = lec.intro;
+  document.getElementById('ld-video').src = `https://www.youtube.com/embed/${lec.youtube}`;
+  document.getElementById('ld-pdf').href = lec.pdf;
+  showView('lesson-detail');
+}
+</script>
+</body>
+</html>

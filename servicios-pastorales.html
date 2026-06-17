@@ -121,6 +121,25 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
 .soc-link{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(255,255,255,0.55);transition:all 0.2s;}
 .soc-link:hover{border-color:rgba(255,255,255,0.5);color:#fff;}
 .soc-link svg{width:16px;height:16px;fill:currentColor;}
+
+/* LOGIN OCULTO — visible solo al pasar el mouse */
+.login-hidden {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.04);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  padding: 4px 2px;
+}
+.login-hidden:hover,
+.login-hidden:focus {
+  color: rgba(255,255,255,0.55);
+}
 </style>
 </head>
 <body>
@@ -151,6 +170,7 @@ footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.06);padding:40
       </div>
     </li>
     <li class="nav-red"><a href="liberacion.html">Liberación</a></li>
+    <li><a href="recursos.html" class="login-hidden">Login</a></li>
   </ul>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
